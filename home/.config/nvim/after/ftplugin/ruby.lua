@@ -7,6 +7,8 @@
 vim.opt_local.iskeyword:append { '?', '!' }
 vim.g.ruby_spellcheck_strings = 1
 
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 -- Gary Bernhardt's hashrocket
 vim.keymap.set('i', '<C-l>', '<Space>=><Space>', { buffer = true, desc = 'Insert =>' })
 

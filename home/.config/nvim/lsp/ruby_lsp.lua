@@ -1,6 +1,9 @@
 return {
   -- https://shopify.github.io/ruby-lsp/#vs-code-features
   init_options = {
+    enabledFeatures = {
+      foldingRanges = false -- I want to use the treesitter fold expression
+    },
     featuresConfiguration = {
       inlayHint = { enableAll = true },
     },
