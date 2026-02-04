@@ -1,21 +1,24 @@
-theme = Tokyonight Storm
+theme = Catppuccin Frappe
 font-family = VictorMono Nerd Font Mono
 font-size = 14
 
 window-colorspace = display-p3
-macos-option-as-alt = true
+window-show-tab-bar = always
 macos-titlebar-style = tabs
+
+macos-option-as-alt = true
 shell-integration = zsh
 
 # background = #3b4261
-# background-opacity = 0.90
-# background-blur-radius = 20
+background-opacity = 0.90
+background-blur-radius = 20
 
 # Move between panes
-# TODO: Unfortunately, for me, this did not work well with my nvim mappings.
-# keybind = ctrl+k=goto_split:top
-# keybind = ctrl+j=goto_split:bottom
-# keybind = ctrl+h=goto_split:left
-# keybind = ctrl+l=goto_split:right
+# The defaults are cmd+opt+arrows
+# Alternatively there are the cmd+[ and cmd+] to sequence through the splits
+keybind = opt+k=goto_split:top
+keybind = opt+j=goto_split:bottom
+keybind = opt+h=goto_split:left
+keybind = opt+l=goto_split:right
 
-keybind = cmd+enter=toggle_split_zoom
+keybind = opt+enter=toggle_split_zoom
