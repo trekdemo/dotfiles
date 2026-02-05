@@ -38,8 +38,6 @@
     "command": "~/bin/claude-statusline.sh",
     "padding": 0
   },
-  "alwaysThinkingEnabled": true,
-  "enabledPlugins": {
-    "atlassian@claude-plugins-official": true
-  }
+  "enabledPlugins": {},
+  "alwaysThinkingEnabled": true
 }
