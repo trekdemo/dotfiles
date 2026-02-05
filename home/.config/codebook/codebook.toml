@@ -2,6 +2,8 @@ words = [
     "catppuccin",
     "codecompanion",
     "dadbod",
+    "dtl",
+    "rubocop",
     "tmux",
     "wezterm",
 ]
