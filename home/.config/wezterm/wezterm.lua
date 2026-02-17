@@ -25,6 +25,9 @@ config.skip_close_confirmation_for_processes_named = { "bash", "sh", "zsh", "tmu
 
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
+  -- New line in Claude Code and co...
+  { key = 'Enter',        mods = 'SHIFT',     action = wezterm.action.SendString('\n') },
+
   -- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
   { mods = "LEADER|CTRL", key = "a",          action = act.SendKey({ key = "a", mods = "CTRL" }) },
 
