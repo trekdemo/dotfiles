@@ -16,5 +16,41 @@
         }
       }
     }
+  },
+  "permission": {
+    "bash": {
+      "*": "ask",
+      "ls *": "allow",
+      "cat *": "allow",
+      "find *": "allow",
+      "grep *": "allow",
+      "git show *": "allow",
+      "git log *": "allow",
+      "git diff *": "allow",
+      "git status *": "allow",
+      "git grep *": "allow",
+      "git branch *": "allow",
+      "git stash *": "allow",
+      "git reflog *": "allow",
+      "head *": "allow",
+      "tail *": "allow",
+      "less *": "allow",
+      "which *": "allow",
+      "type *": "allow",
+      "file *": "allow",
+      "stat *": "allow",
+      "md5sum *": "allow",
+      "sha256sum *": "allow",
+      "wc *": "allow",
+      "sort *": "allow",
+      "uniq *": "allow",
+      "cut *": "allow",
+      "tr *": "allow",
+      "sed *": "allow",
+      "awk *": "allow",
+      "xargs *": "allow"
+    },
+    "edit": "ask",
+    "write": "ask"
   }
 }
