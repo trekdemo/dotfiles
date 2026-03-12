@@ -5,4 +5,4 @@ mouse: true
 # use pager to display markdown
 pager: true
 # word-wrap at width
-width: 72
+width: 100
