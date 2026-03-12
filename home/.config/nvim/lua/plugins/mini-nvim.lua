@@ -18,22 +18,22 @@ return { -- Collection of various small independent plugins/modules
           i = { '@block.inner', '@conditional.inner', '@loop.inner' },
         },
         f = ai.gen_spec.treesitter { a = '@function.outer', i = '@function.inner' }, -- function
-        c = ai.gen_spec.treesitter { a = '@class.outer', i = '@class.inner' }, -- class
-        t = { '<([%p%w]-)%f[^<%w][^<>]->.-</%1>', '^<.->().*()</[^/]->$' }, -- tags
-        d = { '%f[%d]%d+' }, -- digits
-        e = { -- Word with case
+        c = ai.gen_spec.treesitter { a = '@class.outer', i = '@class.inner' },       -- class
+        t = { '<([%p%w]-)%f[^<%w][^<>]->.-</%1>', '^<.->().*()</[^/]->$' },          -- tags
+        d = { '%f[%d]%d+' },                                                         -- digits
+        e = {                                                                        -- Word with case
           { '%u[%l%d]+%f[^%l%d]', '%f[%S][%l%d]+%f[^%l%d]', '%f[%P][%l%d]+%f[^%l%d]', '^[%l%d]+%f[^%l%d]' },
           '^().*()$',
         },
-        u = ai.gen_spec.function_call(), -- u for "Usage"
+        u = ai.gen_spec.function_call(),                          -- u for "Usage"
         U = ai.gen_spec.function_call { name_pattern = '[%w_]' }, -- without dot in function name
       },
     }
 
-    require('mini.animate').setup {
-      cursor = { enable = false },
-      resize = { enable = false },
-    }
+    -- require('mini.animate').setup {
+    --   cursor = { enable = false },
+    --   resize = { enable = false },
+    -- }
 
     -- Buffer	[B [b ]b ]B	MiniBracketed.buffer()
     -- Comment block	[C [c ]c ]C	MiniBracketed.comment()
@@ -85,13 +85,13 @@ return { -- Collection of various small independent plugins/modules
           local location = statusline.section_location { trunc_width = 75 }
 
           return statusline.combine_groups {
-            { hl = mode_hl, strings = { mode } },
+            { hl = mode_hl,                  strings = { mode } },
             '%<', -- Mark general truncate point
             { hl = 'MiniStatuslineFilename', strings = { filename } },
             '%=', -- End left alignment
             { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
             { hl = 'MiniStatuslineFileinfo', strings = { lsp } },
-            { hl = mode_hl, strings = { location } },
+            { hl = mode_hl,                  strings = { location } },
           }
         end,
       },
