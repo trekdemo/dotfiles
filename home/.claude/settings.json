@@ -11,6 +11,7 @@
       "Bash(git log:*)",
       "Bash(gh pr view:*)",
       "Bash(gh pr list:*)",
+      "Bash(bundle:*)",
       "Bash(bin/rails:*)",
       "Bash(bin/restart)",
       "Bash(bin/rspec:*)",
@@ -20,25 +21,16 @@
     "deny": []
   },
   "model": "opus",
-  "hooks": {
-    "Notification": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "say \"what next?\""
-          }
-        ]
-      }
-    ]
-  },
+  "hooks": {},
   "statusLine": {
     "type": "command",
     "command": "~/bin/claude-statusline.sh",
     "padding": 0
   },
-  "enabledPlugins": {},
+  "enabledPlugins": {
+    "lua-lsp@claude-plugins-official": true,
+    "ruby-lsp@claude-plugins-official": true
+  },
   "alwaysThinkingEnabled": true,
   "effortLevel": "medium"
 }
