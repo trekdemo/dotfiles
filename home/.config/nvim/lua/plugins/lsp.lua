@@ -73,5 +73,6 @@ return { -- LSP Configuration & Plugins
     -- vim.lsp.config('ruby_lsp', { cmd = { 'lsp-devtools', 'agent', '--', 'ruby-lsp' } })
     vim.lsp.enable 'ruby_lsp' -- gem install ruby-lsp ruby-lsp-rails ruby-lsp-rspec
     vim.lsp.enable 'herb_ls'  -- npm install -g @herb-tools/language-server
+    vim.lsp.enable 'pyright'  -- npm install -g @herb-tools/language-server
   end,
 }
