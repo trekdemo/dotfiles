@@ -9,7 +9,7 @@ return {
     { '<leader>ts', '<Cmd>TestSuite<CR>',     { desc = '[T]est [S]uite' } },
   },
   config = function()
-    vim.g['test#strategy'] = 'wezterm'
+    vim.g['test#strategy'] = 'dispatch'
 
     local switchStrategy = function(strategy)
       return function()

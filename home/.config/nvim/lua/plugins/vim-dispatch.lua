@@ -1,8 +1,8 @@
 return {
   -- 'tpope/vim-dispatch',
   'trekdemo/vim-dispatch',
-  branch = 'wezterm-support',
-  -- branch = 'kitty-support',
+  -- branch = 'wezterm-support',
+  branch = 'kitty-support',
   -- dev = true,
   -- path = '~/projects/vim-dispatch',
   config = function()
