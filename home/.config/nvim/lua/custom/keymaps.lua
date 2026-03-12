@@ -135,6 +135,10 @@ vim.keymap.set('i', '<M-f>', '<C-o>w', { desc = 'Next word' })
 vim.keymap.set('i', '<M-b>', '<C-o>b', { desc = 'Previous word' })
 vim.keymap.set('i', '<C-u>', '<esc>gUiwea', { desc = 'Upcase last word' })
 
+vim.keymap.set('n', '<leader>cr', function()
+  vim.fn.system([[osascript -e 'tell application "Google Chrome" to reload active tab of front window']])
+end, { desc = 'Reload Chrome tab' })
+
 -- Copy relative file path mapping
 vim.keymap.set('n', '<leader>yp', function()
   local relative_path = vim.fn.expand '%'
