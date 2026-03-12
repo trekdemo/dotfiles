@@ -17,14 +17,15 @@ local specs = {
     name = 'catppuccin',
     priority = 1000,
     config = function()
-      local flavour = 'frappe'
-
       require('catppuccin').setup {
-        flavour = flavour, -- latte, frappe, macchiato, mocha
-        styles = {
-          comments = {},   -- Change the style of comments
+        background = {
+          light = "latte",
+          dark = "frappe",
         },
-        transparent_background = false,
+        styles = {
+          comments = {}, -- Change the style of comments
+        },
+        transparent_background = true,
         integrations = {
           blink_cmp = true,
           gitsigns = true,
