@@ -30,6 +30,9 @@ return {
       },
     },
     opts = {
+      interactions = {
+        chat = { adapter = "claudecode", },
+      },
       display = {
         chat = {
           -- show_settings = true,
@@ -47,7 +50,7 @@ return {
           callback = 'mcphub.extensions.codecompanion',
           opts = {
             show_result_in_chat = true, -- Show mcp tool results in chat
-            make_vars = true, -- Convert resources to #variables
+            make_vars = true,           -- Convert resources to #variables
             make_slash_commands = true, -- Add prompts as /slash commands
           },
         },
@@ -69,14 +72,14 @@ return {
     provider = 'native', -- "auto", "snacks", "native", or custom provider table
     config = true,
     keys = {
-      { '<leader>a', nil, desc = 'AI/Claude Code' },
-      { '<leader>ac', '<cmd>ClaudeCode<cr>', desc = 'Toggle Claude' },
-      { '<leader>af', '<cmd>ClaudeCodeFocus<cr>', desc = 'Focus Claude' },
-      { '<leader>ar', '<cmd>ClaudeCode --resume<cr>', desc = 'Resume Claude' },
+      { '<leader>a',  nil,                              desc = 'AI/Claude Code' },
+      { '<leader>ac', '<cmd>ClaudeCode<cr>',            desc = 'Toggle Claude' },
+      { '<leader>af', '<cmd>ClaudeCodeFocus<cr>',       desc = 'Focus Claude' },
+      { '<leader>ar', '<cmd>ClaudeCode --resume<cr>',   desc = 'Resume Claude' },
       { '<leader>aC', '<cmd>ClaudeCode --continue<cr>', desc = 'Continue Claude' },
       { '<leader>am', '<cmd>ClaudeCodeSelectModel<cr>', desc = 'Select Claude model' },
-      { '<leader>ab', '<cmd>ClaudeCodeAdd %<cr>', desc = 'Add current buffer' },
-      { '<leader>as', '<cmd>ClaudeCodeSend<cr>', mode = 'v', desc = 'Send to Claude' },
+      { '<leader>ab', '<cmd>ClaudeCodeAdd %<cr>',       desc = 'Add current buffer' },
+      { '<leader>as', '<cmd>ClaudeCodeSend<cr>',        mode = 'v',                  desc = 'Send to Claude' },
       {
         '<leader>as',
         '<cmd>ClaudeCodeTreeAdd<cr>',
@@ -85,7 +88,7 @@ return {
       },
       -- Diff management
       { '<leader>aa', '<cmd>ClaudeCodeDiffAccept<cr>', desc = 'Accept diff' },
-      { '<leader>ad', '<cmd>ClaudeCodeDiffDeny<cr>', desc = 'Deny diff' },
+      { '<leader>ad', '<cmd>ClaudeCodeDiffDeny<cr>',   desc = 'Deny diff' },
     },
   },
 }

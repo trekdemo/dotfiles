@@ -20,7 +20,14 @@ return {
     'tpope/vim-fugitive',
     dependencies = {
       'tpope/vim-rhubarb',
-      'barrettruth/diffs.nvim'
+      'barrettruth/diffs.nvim',
+      init = function()
+        vim.g.diffs = {
+          fugitive = true,
+          neogit = false,
+          extra_filetypes = { 'diff' },
+        }
+      end
     },
     commands = { 'Git' },
     keys = {
