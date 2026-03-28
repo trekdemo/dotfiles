@@ -5,3 +5,4 @@ alias la="${list} --long --no-time --no-user --no-permissions --octal-permission
 
 alias oc=opencode
 alias cl=claude
+alias cat=bat
