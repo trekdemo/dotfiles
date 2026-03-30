@@ -38,7 +38,7 @@ def _enter_zen(boss, tab):
     tab.goto_layout('stack')
 
     # +2pt font — estimate new cell width proportionally
-    new_font_size = font_size + 2.0
+    new_font_size = font_size # + 2.0
     new_cell_w = cell_w * new_font_size / font_size
     target_cols = 100
     padding_h = max(0, int((os_width - target_cols * new_cell_w) / 2))
