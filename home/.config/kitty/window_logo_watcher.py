@@ -4,6 +4,7 @@ import os
 import sys
 
 
+# Run /opt/homebrew/bin/kitty --debug-input 2>&1
 def _log(msg):
     print(f"[window_logo_watcher] {msg}", file=sys.stderr, flush=True)
 
@@ -15,12 +16,10 @@ COMMAND_LOGOS = {
     "claude": "claude.png",
     "nvim": "neovim.png",
     "lazygit": "git.png",
+    "lazydocker": "docker.png",
+    "docker": "docker.png",
+    "rspec": "rspec.png",
 }
-
-
-def on_load(boss, data):
-    _log("Watcher loaded successfully")
-
 
 def _resolve_command(cmdline):
     """Extract the base command name from a command line string."""
@@ -48,6 +47,8 @@ def on_cmd_startstop(boss, window, data):
             _log(f"Matched cmd={cmd!r}, logo={logo}, exists={os.path.isfile(logo)}")
             if os.path.isfile(logo):
                 _set_logo(boss, window, logo)
+            else:
+                _set_logo(boss, window, os.path.join(LOGO_DIR, 'shell.png'))
     else:
         # Command ended — clear the logo
         _set_logo(boss, window)
