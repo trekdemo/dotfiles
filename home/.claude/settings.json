@@ -2,25 +2,29 @@
   "env": {},
   "permissions": {
     "allow": [
-      "Bash(cd:*)",
+      "Bash(ls:*)",
       "Bash(echo:*)",
       "Bash(tree:*)",
-      "Bash(find:*)",
-      "Bash(git status:*)",
-      "Bash(git rev-parse:*)",
+      "Bash(git add:*)",
       "Bash(git log:*)",
+      "Bash(git restore:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git stash:*)",
+      "Bash(git status:*)",
       "Bash(gh pr view:*)",
       "Bash(gh pr list:*)",
-      "Bash(bundle:*)",
+      "Bash(bundle install:*)",
+      "Bash(bundle show:*)",
       "Bash(bin/rails:*)",
       "Bash(bin/restart)",
       "Bash(bin/rspec:*)",
       "Bash(bin/rubocop:*)",
-      "mcp__ide__getDiagnostics"
+      "mcp__ide__getDiagnostics",
+      "WebFetch(domain:docs.anthropic.com)"
     ],
     "deny": []
   },
-  "model": "opus",
+  "model": "opus[1m]",
   "hooks": {},
   "statusLine": {
     "type": "command",
@@ -31,6 +35,7 @@
     "lua-lsp@claude-plugins-official": true,
     "ruby-lsp@claude-plugins-official": true
   },
+  "syntaxHighlightingDisabled": false,
   "alwaysThinkingEnabled": true,
   "effortLevel": "medium"
 }
