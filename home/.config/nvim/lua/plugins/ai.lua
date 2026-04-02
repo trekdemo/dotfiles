@@ -15,12 +15,7 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
-      {
-        -- Make sure to set this up properly if you have lazy=true
-        'MeanderingProgrammer/render-markdown.nvim',
-        opts = { file_types = { 'markdown', 'codecompanion' } },
-        ft = { 'markdown', 'codecompanion' },
-      },
+      'render-markdown.nvim',
       {
         'ravitemer/mcphub.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' },
