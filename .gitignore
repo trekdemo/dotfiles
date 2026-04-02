@@ -38,6 +38,8 @@
 /home/.httpie/version_info.json
 /home/.config/nvm
 
+auth.json
+
 # Only keep the settings file
 /home/.config/zed/*
 !/home/.config/zed/settings.json

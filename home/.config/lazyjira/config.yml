@@ -1,0 +1,29 @@
+# https://github.com/textfuel/lazyjira/blob/main/docs/Config.md
+gui:
+  sidePanelWidth: 100
+  issueListFields:
+    - "type"
+    - "key"
+    - "status"
+    - "summary"
+
+issueTabs:
+  - name: WIP
+    jql: project = {{.ProjectKey}} AND assignee=currentUser() AND statusCategory = "In Progress" ORDER BY status DESC, priority DESC, updated DESC
+  - name: Assigned
+    jql: project = {{.ProjectKey}} AND assignee=currentUser() AND statusCategory != Done ORDER BY status DESC, priority DESC, updated DESC
+  - name: "XP: Epics"
+    jql: Team[Team] = 1d73841f-1468-4f9d-be1f-995e8c743ca8 AND statusCategory != Done AND type = Epic ORDER BY status DESC, priority DESC, updated DESC
+  - name: "Recent"
+    jql: "project = {{.ProjectKey}} AND Team[Team] = 1d73841f-1468-4f9d-be1f-995e8c743ca8 AND updated >= -7d ORDER BY updated DESC"
+  # - name: "Recent"
+  #   jql: "project = {{.ProjectKey}} AND updated >= -7d ORDER BY updated DESC"
+  # - name: All
+  #   jql: project = {{.ProjectKey}} AND statusCategory != Done ORDER BY updated DESC
+customFields:
+  - id: "customfield_10041"
+    name: "Story Points"
+  - id: "customfield_10001"
+    name: "Team"
+  - id: "parent"
+    name: "Parent"
