@@ -167,16 +167,19 @@ return { -- Fuzzy Finder (files, lsp, etc)
     end
 
     -- Rails and Ruby related finders
-    vim.keymap.set('n', '<leader>ra', find_files_within_glob('**/app/assets/**', 'Assets'), { desc = 'Find Rails Assets' })
+    vim.keymap.set('n', '<leader>ra', find_files_within_glob('**/app/assets/**', 'Assets'),
+      { desc = 'Find Rails Assets' })
     vim.keymap.set(
       'n',
       '<leader>rc',
       find_files_within_glob({ '**/app/controllers/**.rb', '**/app/channels/**', '**/app/admin/**' }, 'Controllers'),
       { desc = 'Find Rails Controllers' }
     )
-    vim.keymap.set('n', '<leader>rh', find_files_within_glob('**/app/helpers/**.rb', 'Helpers'), { desc = 'Find Rails Helpers' })
+    vim.keymap.set('n', '<leader>rh', find_files_within_glob('**/app/helpers/**.rb', 'Helpers'),
+      { desc = 'Find Rails Helpers' })
     vim.keymap.set('n', '<leader>rj', find_files_within_glob('**/app/jobs/**.rb', 'Jobs'), { desc = 'Find Rails Jobs' })
-    vim.keymap.set('n', '<leader>rl', find_files_within_glob('**/app/mailers/**.rb', 'Mailers'), { desc = 'Find Rails Mailers' })
+    vim.keymap.set('n', '<leader>rl', find_files_within_glob('**/app/mailers/**.rb', 'Mailers'),
+      { desc = 'Find Rails Mailers' })
     vim.keymap.set(
       'n',
       '<leader>rm',
@@ -188,7 +191,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
       }, 'Models and business logic'),
       { desc = 'Find Rails Models and business logic' }
     )
-    vim.keymap.set('n', '<leader>rv', find_files_within_glob({ '**/app/views/**', '**/app/serializers/**' }, 'Views'), { desc = 'Find Rails Views' })
+    vim.keymap.set('n', '<leader>rv', find_files_within_glob({ '**/app/views/**', '**/app/serializers/**' }, 'Views'),
+      { desc = 'Find Rails Views' })
     vim.keymap.set('n', '<leader>rs', find_files_within_glob('**/spec/**', 'RSpec Specs'), { desc = 'Find RSpec Specs' })
     vim.keymap.set(
       'n',
@@ -204,5 +208,43 @@ return { -- Fuzzy Finder (files, lsp, etc)
       end, gem_paths)
       builtin.find_files { search_dirs = search_dirs }
     end, { desc = 'Telescope Find in gems' })
+
+    -- Feature branch changes: git diff --name-only main...HEAD
+    local telescope = require("telescope")
+    local finders = require("telescope.finders")
+    local pickers = require("telescope.pickers")
+    local conf = require("telescope.config").values
+    local action_state = require("telescope.actions.state")
+
+    local function git_diff_files(opts)
+      opts = opts or {}
+
+      pickers.new(opts, {
+        prompt_title = "Changed files (branch vs origin/main)",
+
+        finder = finders.new_oneshot_job(
+          { "git", "diff", "--name-only", "origin/main...HEAD" },
+          opts
+        ),
+
+        sorter = conf.file_sorter(opts),
+
+        previewer = conf.file_previewer(opts),
+
+        attach_mappings = function(prompt_bufnr, map)
+          actions.select_default:replace(function()
+            actions.close(prompt_bufnr)
+            local selection = action_state.get_selected_entry()
+            if selection then
+              vim.cmd("edit " .. selection[1])
+            end
+          end)
+          return true
+        end,
+      })
+          :find()
+    end
+
+    vim.keymap.set("n", "<leader>gd", git_diff_files, { desc = "Git diff files vs origin/main" })
   end,
 }
