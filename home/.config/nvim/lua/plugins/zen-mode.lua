@@ -25,7 +25,7 @@ return {
         tmux = { enabled = true },
         kitty = {
           enabled = true,
-          font = '+2',
+          -- font = '+2',
         },
       },
     }
