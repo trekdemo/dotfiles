@@ -41,6 +41,16 @@ Before starting any task, assess your understanding level (1-5 scale):
 - Run linting and type checking before commits
 - Ensure all tests pass before committing
 
+## Workflow Standards
+- **Docs Before Code**: Update documentation (README, PROBLEM_STATEMENT, etc.) and commit before writing implementation code
+- **Commit Per Step**: In multi-step plans, make a git commit after completing each step
+- **Tests With Implementation**: In multi-step plans, write tests alongside the implementation within each step, not as a separate phase
+
+## Hash Access Conventions (Ruby)
+- Use `Hash#fetch` and `Hash#fetch_values` for required keys (fails fast on typos/missing data)
+- Use bracket access (`h[:key]`) for optional keys
+
 ## Test-Driven Development (TDD) Standards
 - **TDD**: Follow Red-Green-Refactor TDD cycle to implement code changes
 - **Tests First**: Write failing tests before any implementation code
+- **Avoid Mocking**: Prefer real test scenarios over mocking. Only mock as a last resort when no real input can trigger the code path, and get explicit approval first
