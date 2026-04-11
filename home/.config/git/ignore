@@ -39,6 +39,7 @@ telepresence.log
 
 .aider.*
 codebook.toml
+.obsidian/*
 
 # Crush AI assistant directory
 .crush/
