@@ -1,6 +1,7 @@
 abbr g="git"
-abbr lg="lazygit"
 abbr ld="lazydocker"
+abbr lg="lazygit"
+abbr lj="lazyjira"
 abbr r="bin/rails"
 abbr :q="exit"
 abbr q="exit"
