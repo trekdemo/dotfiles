@@ -18,23 +18,31 @@
   s = status --short --branch
   branches = "!f() { git branch -a -v | grep -v '/pr/'; }; f"
   collaborators = shortlog -n -s --no-merges
-  ctags = !.git/hooks/ctags
-  edit = !$EDITOR $(git status --porcelain | awk '{print $2}' )
   list-aliases = "!git config -l | grep alias | cut -c 7-"
   ls-ignored = ls-files --exclude-standard --ignored --others
   deleted-files = log --diff-filter=D --summary
   message = log --format=%B -n 1
   remotes = remote -v
-  staged = diff --cached            # diff staged changes
   tags = tag -l
   uncommit = reset --soft HEAD^     # go back before last commit, with files in uncommitted state
   unstage = reset                   # remove files from index (tracking)
-  wip = !echo 'Use git worktree add ... instead!'
   hide = update-index --assume-unchanged
   unhide = update-index --no-assume-unchanged
   unhide-all = update-index --really-refresh
   hidden = !git ls-files -v | grep '^[[:lower:]]'
   ignored = !git status -s --ignored | grep '^!!'
+
+  # Source: https://piechowski.io/post/git-commands-before-reading-code/
+  # Top 20 most-changed files in the last year
+  churn = !git log --format=format: --name-only --since='1 year ago' | sort | uniq -c | sort -nr | head -20
+  # Contributors ranked by commits
+  contributors = shortlog -sn --no-merges
+  # Files most often in bug-fix commits
+  bughotspots = "!git log -i -E --grep='fix|bug|broken' --name-only --format='' | sort | uniq -c | sort -nr | head -20"
+  # Commit count per month (project momentum)
+  velocity = "!git log --format='%ad' --date=format:'%Y-%m' | sort | uniq -c"
+  # Recent crisis/revert commits
+  firefighting = "!git log --oneline --since='1 year ago' | grep -iE 'revert|hotfix|emergency|rollback'"
 
 [core]
   autocrlf = input
