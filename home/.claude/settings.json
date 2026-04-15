@@ -37,5 +37,13 @@
   },
   "syntaxHighlightingDisabled": false,
   "alwaysThinkingEnabled": true,
-  "effortLevel": "medium"
+  "effortLevel": "medium",
+  "extraKnownMarketplaces": {
+    "claude-mermaid": {
+      "source": {
+        "source": "github",
+        "repo": "veelenga/claude-mermaid"
+      }
+    }
+  }
 }
