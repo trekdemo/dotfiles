@@ -5,9 +5,7 @@ return {
   ---@type obsidian.config
   opts = {
     legacy_commands = false, -- this will be removed in the next major release
-    templates = {
-      folder = 'templates',
-    },
+    templates = { folder = 'templates' },
     daily_notes = {
       folder = 'Journal',
     },
@@ -15,6 +13,10 @@ return {
       {
         name = 'Vault',
         path = '~/Downloads/Notes/',
+      },
+      {
+        name = 'Work',
+        path = '~/Documents/Notes/',
       },
     },
   },
