@@ -15,7 +15,7 @@ return {
       trigger = { show_in_snippet = false },
       ghost_text = { enabled = true },
       menu = {
-        auto_show = false,
+        auto_show = true,
         border = 'padded',
         draw = {
           columns = { { 'kind_icon' }, { 'label', 'label_description', gap = 1 }, { 'kind' } },
