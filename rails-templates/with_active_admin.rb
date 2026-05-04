@@ -1,8 +1,10 @@
 gem "devise"
 gem "activeadmin"
 gem 'sassc'
+gem 'rspec-rails', group: [:test, :development]
 
 after_bundle do
+  generate 'rspec:install'
   generate "devise:install"
   generate "active_admin:install"
 
