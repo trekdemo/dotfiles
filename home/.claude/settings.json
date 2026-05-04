@@ -22,7 +22,8 @@
       "mcp__ide__getDiagnostics",
       "WebFetch(domain:docs.anthropic.com)"
     ],
-    "deny": []
+    "deny": [],
+    "defaultMode": "auto"
   },
   "model": "opus[1m]",
   "hooks": {},
@@ -35,9 +36,6 @@
     "lua-lsp@claude-plugins-official": true,
     "ruby-lsp@claude-plugins-official": true
   },
-  "syntaxHighlightingDisabled": false,
-  "alwaysThinkingEnabled": true,
-  "effortLevel": "medium",
   "extraKnownMarketplaces": {
     "claude-mermaid": {
       "source": {
@@ -45,5 +43,10 @@
         "repo": "veelenga/claude-mermaid"
       }
     }
-  }
+  },
+  "syntaxHighlightingDisabled": false,
+  "alwaysThinkingEnabled": true,
+  "effortLevel": "medium",
+  "preferredNotifChannel": "kitty",
+  "skipAutoPermissionPrompt": true
 }
