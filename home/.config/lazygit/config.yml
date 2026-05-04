@@ -32,7 +32,8 @@ gui:
     '*': '#b7bdf8'
 git:
   pagers:
-    - # externalDiffCommand: difft --color=always --display=inline --syntax-highlight=on --tab-width=2
-      colorArg: always
+    - colorArg: always
       pager: delta --color-only --dark --paging=never --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+    - externalDiffCommand: git difftool -- {path}
+    # - externalDiffCommand: difft --color=always --display=inline --syntax-highlight=on --tab-width=2
   overrideGpg: true

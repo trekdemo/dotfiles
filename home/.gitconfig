@@ -102,12 +102,18 @@
   colorMoved = plain
   mnemonicPrefix = true
   renames = true
-  tool = kitty
+  tool = nvimdiff
   guitool = kitty.gui
 
 [difftool]
     prompt = false
     trustExitCode = true
+
+[diff "filestat"]
+  textconv = stat
+
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [difftool "kitty"]
     cmd = kitten diff $LOCAL $REMOTE
 [difftool "kitty.gui"]
@@ -134,9 +140,6 @@
 
 [mergetool "nvimdiff"]
   cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
-
-[diff "filestat"]
-  textconv = stat
 
 [push]
   default = simple
