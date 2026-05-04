@@ -51,3 +51,5 @@ tasks/*.md
 # Claude Code
 **/.claude/settings.local.json
 _agentic_plans/
+
+.playwright-cli/*
