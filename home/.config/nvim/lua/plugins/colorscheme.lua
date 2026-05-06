@@ -1,16 +1,6 @@
 local specs = {
-  {
-    'folke/tokyonight.nvim',
-    name = 'tokyonight',
-    config = function()
-      vim.opt_global.background = 'dark'
-      vim.cmd.colorscheme 'tokyonight-moon'
-
-      -- You can configure highlights by doing something like
-      vim.cmd.hi 'Comment gui=none'
-      vim.cmd.hi 'Folded guibg=none'
-    end,
-  },
+  -- https://github.com/EdenEast/nightfox.nvim#configuration
+  { "EdenEast/nightfox.nvim" },
   -- https://github.com/catppuccin/nvim?tab=readme-ov-file#configuration
   {
     'catppuccin/nvim',
@@ -59,13 +49,10 @@ local specs = {
   },
 }
 
-local name = 'catppuccin'
 for _, spec in ipairs(specs) do
-  if spec.name == name then
-    spec.lazy = false    -- make sure we load this during startup if it is your main colorscheme
+  spec.lazy = false      -- make sure we load this during startup if it is your main colorscheme
+  if spec.name == 'catppuccin' then
     spec.priority = 1000 -- make sure to load this before all the other start plugins
-  else
-    spec.lazy = true
   end
 end
 
