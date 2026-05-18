@@ -1,1 +1,1 @@
-alias gemini="npx https://github.com/google-gemini/gemini-cli"
+alias gemini="npx @google/gemini-cli"
