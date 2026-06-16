@@ -10,30 +10,30 @@ gui:
   enlargedSideViewLocation: top
   theme:
     activeBorderColor:
-      - '#8aadf4'
+      - "#8aadf4"
       - bold
     inactiveBorderColor:
-      - '#a5adcb'
+      - "#a5adcb"
     optionsTextColor:
-      - '#8aadf4'
+      - "#8aadf4"
     selectedLineBgColor:
-      - '#363a4f'
+      - "#363a4f"
     cherryPickedCommitBgColor:
-      - '#494d64'
+      - "#494d64"
     cherryPickedCommitFgColor:
-      - '#8aadf4'
+      - "#8aadf4"
     unstagedChangesColor:
-      - '#ed8796'
+      - "#ed8796"
     defaultFgColor:
-      - '#cad3f5'
+      - "#cad3f5"
     searchingActiveBorderColor:
-      - '#eed49f'
+      - "#eed49f"
   authorColors:
-    '*': '#b7bdf8'
+    "*": "#b7bdf8"
 git:
   pagers:
-    - colorArg: always
-      pager: delta --color-only --dark --paging=never --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
-    - externalDiffCommand: git difftool -- {path}
+    # - colorArg: always
+    #   pager: delta --color-only --dark --paging=never --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+    # - externalDiffCommand: git difftool -- {path}
     # - externalDiffCommand: difft --color=always --display=inline --syntax-highlight=on --tab-width=2
   overrideGpg: true
