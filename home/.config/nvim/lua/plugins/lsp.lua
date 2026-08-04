@@ -59,11 +59,11 @@ return { -- LSP Configuration & Plugins
       end,
     })
 
-    vim.lsp.enable 'marksman' -- brew install marksman
+    vim.lsp.enable 'marksman'    -- brew install marksman
     vim.lsp.enable 'codebook'
-    vim.lsp.enable 'dockerls' -- go install github.com/docker/docker-language-server/cmd/docker-language-server@latest
+    vim.lsp.enable 'dockerls'    -- go install github.com/docker/docker-language-server/cmd/docker-language-server@latest
     vim.lsp.enable 'html'
-    vim.lsp.enable 'ts_ls'
+    vim.lsp.enable 'vtsls'       -- npm install -g @vtsls/language-server
     vim.lsp.enable 'jsonls'
     vim.lsp.enable 'yamlls'      -- brew install yaml-language-server
     vim.lsp.enable 'tailwindcss' -- npm install -g @tailwindcss/language-server
