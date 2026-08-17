@@ -1,6 +1,8 @@
 !/home/.config/fish/fisher-pkg/fishfile
-/home/.Brewfile.lock.json
 !/terminfo/.terminfo/src
+/home/.Brewfile.lock.json
+/home/.config/homebrew/trust.json.lock
+/home/.agents/.skill-lock.json
 /home/.config/raycast/extensions
 /home/.config/cliptic/*
 /home/.config/configstore
