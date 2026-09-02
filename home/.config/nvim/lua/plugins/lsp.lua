@@ -49,11 +49,7 @@ return { -- LSP Configuration & Plugins
 
         -- Enable code lenses
         if client and client.server_capabilities.codeLensProvider then
-          vim.lsp.codelens.refresh { bufnr = args.buf }
-          vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'InsertLeave' }, {
-            buffer = args.buf,
-            callback = vim.lsp.codelens.refresh,
-          })
+          vim.lsp.codelens.enable(true, { bufnr = args.buf })
         end
         vim.keymap.set({ 'n', 'v' }, 'grl', vim.lsp.codelens.run, { desc = 'vim.lsp.codelens.run()' })
       end,
