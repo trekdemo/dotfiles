@@ -1,17 +1,27 @@
 theme = Catppuccin Frappe
 font-family = VictorMono Nerd Font Mono
-font-size = 14
+# font-family = JetBrainsMono Nerd Font Mono
+font-size = 13
 
+# ---------------------------------------------------------------------
+# Look'n'feel
+# ---------------------------------------------------------------------
 window-colorspace = display-p3
 window-show-tab-bar = always
 macos-titlebar-style = tabs
 
-macos-option-as-alt = true
-shell-integration = zsh
+window-padding-x = 14
+window-padding-y = 14
 
-# background = #3b4261
 background-opacity = 0.90
 background-blur-radius = 20
+
+shell-integration = zsh
+
+# ---------------------------------------------------------------------
+# Keybinds
+# ---------------------------------------------------------------------
+macos-option-as-alt = true
 
 # Move between panes
 # The defaults are cmd+opt+arrows
@@ -20,5 +30,10 @@ keybind = opt+k=goto_split:top
 keybind = opt+j=goto_split:bottom
 keybind = opt+h=goto_split:left
 keybind = opt+l=goto_split:right
+
+keybind = super+control+shift+alt+arrow_down=resize_split:down,50
+keybind = super+control+shift+alt+arrow_up=resize_split:up,50
+keybind = super+control+shift+alt+arrow_left=resize_split:left,50
+keybind = super+control+shift+alt+arrow_right=resize_split:right,50
 
 keybind = opt+enter=toggle_split_zoom
