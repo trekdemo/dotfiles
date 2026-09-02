@@ -2,6 +2,10 @@
   name = Gergő Sulymosi
   email = gergo.sulymosi@gmail.com
 
+# Machine-specific config (e.g. signingkey, company-related settings, ...)
+[include]
+	path = ~/.local/gitconfig
+
 [alias]
   aa= !git add -u && git add . && git status -s
   b = branch
