@@ -53,8 +53,6 @@
   logallrefupdates = true
   ignorecase = true
   precomposeunicode = true
-  ; pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less
-  pager = delta --color-only
 
 [interactive]
   diffFilter = delta --color-only

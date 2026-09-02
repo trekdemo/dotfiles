@@ -31,9 +31,6 @@ gui:
   authorColors:
     "*": "#b7bdf8"
 git:
-  pagers:
-    # - colorArg: always
-    #   pager: delta --color-only --dark --paging=never --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
-    # - externalDiffCommand: git difftool -- {path}
-    # - externalDiffCommand: difft --color=always --display=inline --syntax-highlight=on --tab-width=2
+  diffRenderers:
+    - command: hunk pager
   overrideGpg: true
