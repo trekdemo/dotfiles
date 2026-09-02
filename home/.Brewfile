@@ -28,7 +28,6 @@ brew 'yazi'
 brew 'gh'
 tap 'olets/tap'
 brew 'olets/tap/zsh-abbr'
-brew 'claude-code'
 brew 'opencode'
 
 brew 'llm'  # Access to multiple LLMs from the terminal with logging and more...
