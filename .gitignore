@@ -40,6 +40,10 @@
 /home/.httpie/version_info.json
 /home/.config/nvm
 
+# OpenLogi - https://openlogi.org
+/home/.config/openlogi/*
+!/home/.config/openlogi/config.toml
+
 auth.json
 
 # Herdr
