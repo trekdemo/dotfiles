@@ -33,6 +33,7 @@ brew 'opencode'
 
 brew 'llm'  # Access to multiple LLMs from the terminal with logging and more...
 brew 'glow' # Markdown rendering in the terminal
+brew 'herdr'
 
 cask 'raycast'
 

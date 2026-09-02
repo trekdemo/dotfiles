@@ -42,6 +42,12 @@
 
 auth.json
 
+# Herdr
+/home/.config/herdr/*
+!/home/.config/herdr/config.toml
+/home/.config/opencode/herdr-tui-session.js
+/home/.config/opencode/plugins/herdr-agent-state.js
+
 # Only keep the settings file
 /home/.config/zed/*
 !/home/.config/zed/settings.json
