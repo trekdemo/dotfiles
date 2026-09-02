@@ -1,0 +1,48 @@
+#!/bin/zsh
+
+# Create a Kitty Dev Square: a 2x2 grid with editor, diff watch, terminal,
+# and opencode.
+#
+#   +-----------+-----------+
+#   |  editor   | hunk diff |
+#   +-----------+-----------+
+#   | terminal  | opencode  |
+#   +-----------+-----------+
+#
+# Usage: kds
+
+[[ -n $1 ]] && { echo "Usage: kds"; return 1; }
+[[ -z $KITTY_WINDOW_ID ]] && { echo "You must run kds inside kitty."; return 1; }
+
+local current_dir="$PWD"
+local editor="$KITTY_WINDOW_ID"
+local term_pane diff_pane opencode_pane
+
+# The splits layout is required for precise, arbitrary window placement.
+kitty @ goto-layout splits >/dev/null || return 1
+
+kitty @ set-tab-title "$(basename "$current_dir")" >/dev/null
+
+# Brief pauses let kitty reflow between splits so bias fractions are exact.
+local settle=0.12
+
+# Bottom-left terminal (splits the editor into two rows).
+term_pane=$(kitty @ launch --location hsplit --cwd current --bias 50 \
+  --next-to "id:$editor")
+sleep $settle
+
+# Top-right diff watcher (splits the editor row into two columns).
+diff_pane=$(kitty @ launch --location vsplit --cwd current --bias 50 \
+  --next-to "id:$editor")
+sleep $settle
+
+# Bottom-right opencode (splits the terminal row into two columns).
+opencode_pane=$(kitty @ launch --location vsplit --cwd current --bias 50 \
+  --next-to "id:$term_pane")
+sleep $settle
+
+kitty @ send-text --match "id:$editor" "${EDITOR:-nvim} .\r"
+kitty @ send-text --match "id:$diff_pane" "hunk diff --watch\r"
+kitty @ send-text --match "id:$opencode_pane" "opencode\r"
+
+kitty @ focus-window --match "id:$editor" >/dev/null

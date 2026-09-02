@@ -1,0 +1,36 @@
+#!/bin/zsh
+
+# Create one kdl dev layout per immediate subdirectory of the current
+# directory, each in its own kitty tab. The current tab is reused for the
+# first subdirectory.
+#
+# Usage: kdlm <ai_cmd> [<second_ai_cmd>]
+#   kdlm opencode
+#   kdlm "claude" "codex"
+
+[[ -z $1 ]] && { echo "Usage: kdlm <ai_cmd> [<second_ai_cmd>]"; return 1; }
+[[ -z $KITTY_WINDOW_ID ]] && { echo "You must run kdlm inside kitty."; return 1; }
+
+local ai="$1"
+local ai2="$2"
+local base_dir="$PWD"
+local first=true
+local dir dirpath cmd tab_pane
+
+for dir in "$base_dir"/*/(N); do
+  dirpath="${dir%/}"
+
+  # Build the kdl invocation, quoting so multi-word ai commands stay intact.
+  cmd="kdl ${(q)ai}"
+  [[ -n $ai2 ]] && cmd+=" ${(q)ai2}"
+
+  if $first; then
+    # Reuse the current tab for the first project.
+    kitty @ send-text --match "id:$KITTY_WINDOW_ID" "cd ${(q)dirpath} && ${cmd}\r"
+    first=false
+  else
+    tab_pane=$(kitty @ launch --type tab --cwd "$dirpath")
+    sleep 0.3   # let the new tab's shell reach its prompt
+    kitty @ send-text --match "id:$tab_pane" "${cmd}\r"
+  fi
+done

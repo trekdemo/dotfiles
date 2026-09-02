@@ -1,0 +1,37 @@
+#!/bin/zsh
+
+# Create a Kitty Swarm Layout: a grid of panes all running the same command.
+# Great for launching several AI agents side by side on one task.
+#
+# Usage: ksl <pane_count> <command>
+#   ksl 4 opencode
+
+[[ -z $1 || -z $2 ]] && { echo "Usage: ksl <pane_count> <command>"; return 1; }
+[[ -z $KITTY_WINDOW_ID ]] && { echo "You must run ksl inside kitty."; return 1; }
+[[ $1 != <1-> ]] && { echo "pane_count must be a positive integer."; return 1; }
+
+local count="$1"
+local cmd="$2"
+local current_dir="$PWD"
+local -a panes
+local new_pane
+
+# The grid layout automatically tiles every window evenly.
+kitty @ goto-layout grid >/dev/null || return 1
+
+kitty @ set-tab-title "$(basename "$current_dir")" >/dev/null
+
+panes=("$KITTY_WINDOW_ID")
+
+# Brief pauses let kitty reflow the grid between each new window.
+while (( ${#panes[@]} < count )); do
+  new_pane=$(kitty @ launch --cwd current) || break
+  panes+=("$new_pane")
+  sleep 0.1
+done
+
+for pane in "${panes[@]}"; do
+  kitty @ send-text --match "id:$pane" "$cmd\r"
+done
+
+kitty @ focus-window --match "id:${panes[1]}" >/dev/null

@@ -1,0 +1,50 @@
+#!/bin/zsh
+
+# Create a Kitty Dev Layout with editor, terminal, and ai pane(s)
+# Editor fills the top-left, a slim terminal spans the bottom, and the ai
+# tool(s) sit in a column on the right.
+#
+# Usage: kdl <ai_cmd> [<second_ai_cmd>]
+#   kdl opencode
+#   kdl "claude" "codex"
+
+[[ -z $1 ]] && { echo "Usage: kdl <ai_cmd> [<second_ai_cmd>]"; return 1; }
+[[ -z $KITTY_WINDOW_ID ]] && { echo "You must run kdl inside kitty."; return 1; }
+
+local ai="$1"
+local ai2="$2"
+local current_dir="$PWD"
+local editor="$KITTY_WINDOW_ID"
+local term_pane ai_pane ai2_pane
+
+# The splits layout is required for precise, arbitrary window placement.
+kitty @ goto-layout splits >/dev/null || return 1
+
+# Name the current tab after the base directory.
+kitty @ set-tab-title "$(basename "$current_dir")" >/dev/null
+
+# Brief pauses let kitty reflow between splits so bias fractions are exact.
+local settle=0.12
+
+# Slim terminal along the bottom (15% of the editor's height).
+term_pane=$(kitty @ launch --location hsplit --cwd current --bias 15 \
+  --next-to "id:$editor")
+sleep $settle
+
+# AI column on the right (30% of the editor's width).
+ai_pane=$(kitty @ launch --location vsplit --cwd current --bias 30 \
+  --next-to "id:$editor")
+sleep $settle
+
+# Optional second AI stacked below the first.
+if [[ -n $ai2 ]]; then
+  ai2_pane=$(kitty @ launch --location hsplit --cwd current --bias 50 \
+    --next-to "id:$ai_pane")
+  sleep $settle
+  kitty @ send-text --match "id:$ai2_pane" "$ai2\r"
+fi
+
+kitty @ send-text --match "id:$ai_pane" "$ai\r"
+kitty @ send-text --match "id:$editor" "${EDITOR:-nvim} .\r"
+
+kitty @ focus-window --match "id:$editor" >/dev/null
