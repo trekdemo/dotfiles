@@ -4,3 +4,4 @@ alias ll="${list} --long --no-time --no-user --no-permissions --octal-permission
 alias la="${list} --long --no-time --no-user --no-permissions --octal-permissions --all"
 
 alias cat=bat
+alias cd=z
