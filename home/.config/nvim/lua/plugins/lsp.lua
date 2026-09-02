@@ -65,6 +65,7 @@ return { -- LSP Configuration & Plugins
     vim.lsp.enable 'tailwindcss' -- npm install -g @tailwindcss/language-server
     vim.lsp.enable 'bashls'      -- npm install -g bash-language-server
     vim.lsp.enable 'lua_ls'
+    vim.lsp.enable 'gopls' -- go install golang.org/x/tools/gopls@latest
     -- Do this to debug https://lsp-devtools.readthedocs.io/en/latest/lsp-devtools/guide/getting-started.html
     -- vim.lsp.config('ruby_lsp', { cmd = { 'lsp-devtools', 'agent', '--', 'ruby-lsp' } })
     vim.lsp.enable 'ruby_lsp' -- gem install ruby-lsp ruby-lsp-rails ruby-lsp-rspec
