@@ -9,6 +9,8 @@ brew 'starship'     # The cross-shell prompt for astronauts; https://starship.rs
 brew 'neovim'       # , args: %w[HEAD]
 brew 'bat'          # Clone of cat(1) with syntax highlighting and Git integration
 brew 'git'
+brew 'git-lfs'
+brew 'hunk'
 brew 'lazygit'
 brew 'lazydocker'
 brew 'ctags'
@@ -26,9 +28,13 @@ brew 'yazi'
 brew 'gh'
 tap 'olets/tap'
 brew 'olets/tap/zsh-abbr'
+brew 'claude-code'
+brew 'opencode'
 
 brew 'llm'  # Access to multiple LLMs from the terminal with logging and more...
 brew 'glow' # Markdown rendering in the terminal
+
+cask 'raycast'
 
 # ------------------------------------------------------------------------------
 # Languages
@@ -44,10 +50,9 @@ brew 'shellcheck'
 # Apps for work
 # ------------------------------------------------------------------------------
 cask 'kitty'
-cask 'wezterm'
-cask 'rectangle'
+cask 'ghostty'
 # tap 'derailed/k9s'
-# brew 'k9s'
+brew 'k9s'
 # cask 'google-cloud-sdk'
 
 # ------------------------------------------------------------------------------

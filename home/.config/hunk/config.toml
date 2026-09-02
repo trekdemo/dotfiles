@@ -1,0 +1,3 @@
+theme = "catppuccin-frappe"
+transparent_background = false
+exclude_untracked = false
