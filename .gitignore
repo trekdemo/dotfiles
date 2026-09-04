@@ -17,6 +17,8 @@
 /home/.config/helm/repositories.*
 /home/.config/heroku
 /home/.config/hub
+/home/.config/hunk/*
+!/home/.config/hunk/config.toml
 /home/.config/irb/irb_history
 /home/.config/k9s/config.yml
 /home/.config/kitty/kitty.conf.bak

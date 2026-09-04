@@ -1,3 +1,11 @@
 theme = "catppuccin-frappe"
 transparent_background = false
 exclude_untracked = false
+mode = "auto"
+line_numbers = true
+wrap_lines = false
+hunk_headers = false
+menu_bar = true
+agent_notes = false
+copy_decorations = false
+cursor_line = "row"
