@@ -33,6 +33,7 @@ Before starting any task, assess your understanding level (1-5 scale):
 - **Consistent Patterns**: Follow established patterns within the codebase
 
 ### Development Strategy
+- **Make the change easy, then make the easy change** (Kent Beck) - If a change feels awkward, first refactor so the structure welcomes it (behavior-preserving, may be hard), then make the now-small change. Keep the two steps as separate commits: `refactor:` then `feat:`/`fix:`. Never mix refactoring and behavior change in one commit.
 - **Fix root causes, not symptoms** - Fix failing tests instead of deleting them
 - **Prefer composition over inheritance** - Use interfaces and unions over complex class hierarchies
 
