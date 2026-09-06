@@ -29,6 +29,7 @@ brew 'gh'
 tap 'olets/tap'
 brew 'olets/tap/zsh-abbr'
 brew 'opencode'
+brew 'pi-coding-agent'
 
 tap 'atlassian/homebrew-acli'
 brew 'acli'
