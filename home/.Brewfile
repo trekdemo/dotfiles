@@ -45,6 +45,8 @@ brew 'bats'
 brew 'go'
 brew 'lua-language-server'
 brew 'shellcheck'
+brew 'marksman'
+brew 'yaml-language-server'
 
 # ------------------------------------------------------------------------------
 # Apps for work
