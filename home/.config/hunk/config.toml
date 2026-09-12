@@ -9,3 +9,4 @@ menu_bar = true
 agent_notes = false
 copy_decorations = false
 cursor_line = "row"
+prompt_save_view_preferences = false
