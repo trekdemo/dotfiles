@@ -55,14 +55,24 @@ thumbwheel = false
 haptic_feedback = false
 haptic_panel = false
 
+[devices."unit:f6545a54".links."direct:046d:b01d".capabilities]
+buttons = true
+pointer = false
+lighting = false
+scroll_inversion = false
+hires_wheel = false
+thumbwheel = false
+haptic_feedback = false
+haptic_panel = false
+
 [keyboard]
 
 [devices."unit:f6545a54".links."direct:046d:b01d"]
 
 [devices."unit:f6545a54".bindings]
 Forward = "PreviousDesktop"
-WheelTiltLeft = "MouseBack"
-WheelTiltRight = "MouseForward"
+WheelTiltLeft = "BrowserBack"
+WheelTiltRight = "BrowserForward"
 Back = "NextDesktop"
 
 [devices."unit:f6545a54".disabled_gestures.Forward]
