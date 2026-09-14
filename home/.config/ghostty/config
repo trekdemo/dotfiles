@@ -1,7 +1,14 @@
-theme = Catppuccin Frappe
-font-family = VictorMono Nerd Font Mono
+# vim: ft=toml
+
+theme = light:Seoulbones Light,dark:Catppuccin Macchiato
+font-family = VictorMono Nerd Font Propo
+# font-family = VictorMono Nerd Font Mono
 # font-family = JetBrainsMono Nerd Font Mono
 font-size = 13
+
+font-thicken = true
+# font-thicken-strength = 0-255
+font-thicken-strength = 100
 
 # ---------------------------------------------------------------------
 # Look'n'feel
@@ -13,13 +20,19 @@ macos-titlebar-style = tabs
 window-padding-x = 14
 window-padding-y = 14
 
-background-opacity = 0.90
-background-blur-radius = 20
+background-opacity = 0.95
+background-blur-radius = 15
 
+custom-shader = ~/.config/ghostty/shaders/cursor_tail.glsl
+
+# ---------------------------------------------------------------------
+# OS/Shell integration
+# ---------------------------------------------------------------------
+notify-on-command-finish-action = no-bell,notify
 shell-integration = zsh
 
 # ---------------------------------------------------------------------
-# Keybinds
+# Keybindings
 # ---------------------------------------------------------------------
 macos-option-as-alt = true
 
