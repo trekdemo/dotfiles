@@ -39,6 +39,12 @@ vim.api.nvim_create_autocmd({ 'TermOpen' }, {
   end,
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+  callback = function()
+    pcall(vim.treesitter.start)
+  end,
+})
+
 -- Quit using "q" from certain buffers
 -- Source:https://github.com/Mr-LLLLL/utilities.nvim/blob/main/lua/utilities/init.lua
 vim.api.nvim_create_autocmd({ 'Filetype' }, {
