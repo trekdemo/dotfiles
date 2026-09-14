@@ -1,16 +1,64 @@
-local specs = {
-  -- https://github.com/EdenEast/nightfox.nvim#configuration
-  { "EdenEast/nightfox.nvim" },
+return {
+  {
+    'afonsofrancof/OSC11.nvim',
+    init = function()
+      local function get_macos_appearance()
+        local handle = io.popen 'defaults read -g AppleInterfaceStyle 2>/dev/null'
+        if handle then
+          local result = handle:read '*a'
+          handle:close()
+          if result:match 'Dark' then
+            return 'dark'
+          end
+        end
+        return 'light'
+      end
+
+      -- Set background and colorscheme based on macOS mode
+      vim.o.background = get_macos_appearance()
+
+      -- Example: change colorscheme to match
+      if vim.o.background == 'dark' then
+        vim.opt.background = 'dark'
+        vim.cmd 'colorscheme catppuccin-macchiato'
+      else
+        vim.opt.background = 'light'
+        vim.cmd 'colorscheme seoulbones'
+      end
+    end,
+    opts = {
+      -- Function to call when switching to dark theme
+      on_dark = function()
+        vim.opt.background = 'dark'
+        vim.cmd 'colorscheme catppuccin-macchiato'
+      end,
+      -- Function to call when switching to light theme
+      on_light = function()
+        vim.opt.background = 'light'
+        vim.cmd 'colorscheme seoulbones'
+      end,
+    },
+  },
+  {
+    'zenbones-theme/zenbones.nvim',
+    -- Optionally install Lush. Allows for more configuration or extending the colorscheme
+    -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+    -- In Vim, compat mode is turned on as Lush only works in Neovim.
+    dependencies = 'rktjmp/lush.nvim',
+    lazy = false,
+    priority = 1000,
+  },
   -- https://github.com/catppuccin/nvim?tab=readme-ov-file#configuration
   {
     'catppuccin/nvim',
     name = 'catppuccin',
+    lazy = false,
     priority = 1000,
     config = function()
       require('catppuccin').setup {
         background = {
-          light = "latte",
-          dark = "frappe",
+          light = 'latte',
+          dark = 'macchiato',
         },
         styles = {
           comments = {}, -- Change the style of comments
@@ -42,26 +90,7 @@ local specs = {
           },
         },
       }
-      vim.opt_global.background = 'dark'
       vim.cmd.hi('link', 'QuickfixLine', 'CursorLine')
-      vim.cmd.colorscheme 'catppuccin'
     end,
   },
 }
-
-for _, spec in ipairs(specs) do
-  spec.lazy = false      -- make sure we load this during startup if it is your main colorscheme
-  if spec.name == 'catppuccin' then
-    spec.priority = 1000 -- make sure to load this before all the other start plugins
-  end
-end
-
--- Make the background transparent
--- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
--- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
--- vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
--- vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'none' })
-
--- Change the name of the colorscheme plugin below, and then
--- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`
-return specs
