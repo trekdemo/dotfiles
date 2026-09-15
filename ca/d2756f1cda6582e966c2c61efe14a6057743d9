@@ -1,0 +1,37 @@
+home/.zshrc
+  s_c8915b2b5e6c3f::t_ec5f5dcde87d6f 66-67
+home/.config/zsh/conf.d/mise.zsh
+  s_c8915b2b5e6c3f::t_397c1b1d467dec 2
+install.sh
+  s_c8915b2b5e6c3f::t_e8390b12ae6ceb 1-242
+home/.config/zsh/conf.d/zsh-abbr.zsh
+  s_c8915b2b5e6c3f::t_397a3dfa28f9c6 3-15
+home/.config/zsh/conf.d/ssh-agent.plugin.zsh
+  s_c8915b2b5e6c3f::t_b49a68b1437644 1-3
+home/.config/zsh/conf.d/aliases.zsh
+  s_c8915b2b5e6c3f::t_cfa1bc0e3232af 1-6,8-11
+home/.zprofile
+  s_c8915b2b5e6c3f::t_e6b5a2e6eb8b45 1-2
+home/.config/zsh/conf.d/fzf.zsh
+  s_c8915b2b5e6c3f::t_cec64845efe607 4-13,28-42
+README.md
+  s_c8915b2b5e6c3f::t_e17a74e404a9cc 12-29
+home/.gitconfig
+  s_c8915b2b5e6c3f::t_fb7f5536fbd1d9 12,15,17,101,117-118,306-310
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "cad2756f1cda6582e966c2c61efe14a6057743d9",
+  "prompts": {},
+  "sessions": {
+    "s_c8915b2b5e6c3f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "647a438e-2f62-45a4-a866-95e953fa9551",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "Gergő Sulymosi <gergo.sulymosi@gmail.com>"
+    }
+  }
+}
