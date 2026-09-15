@@ -4,7 +4,6 @@ return {
   dependencies = { -- optional packages
     'ray-x/guihua.lua',
     'neovim/nvim-lspconfig',
-    -- { "nvim-treesitter/nvim-treesitter", branch = 'main' } -- optional for master version
   },
   opts = function()
     require('go').setup(opts)
