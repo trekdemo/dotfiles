@@ -63,8 +63,8 @@ done
 [ -f "$HOME/.local/zshrc" ] && source "$HOME/.local/zshrc"
 
 # Setup prompt https://starship.rs/config/
-eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
+(( $+commands[starship] )) && eval "$(starship init zsh)"
+(( $+commands[zoxide] ))   && eval "$(zoxide init zsh)"
 # zprof
 
 export NVM_DIR="$HOME/.config//nvm"

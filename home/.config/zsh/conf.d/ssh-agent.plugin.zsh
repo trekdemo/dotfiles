@@ -1,3 +1,6 @@
+# Nothing to do without an ssh client or a ~/.ssh directory (fresh containers).
+(( $+commands[ssh-agent] )) && [[ -d "$HOME/.ssh" ]] || return 0
+
 typeset _agent_forwarding _ssh_env_cache
 
 function _start_agent() {

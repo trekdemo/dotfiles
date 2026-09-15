@@ -2,10 +2,6 @@
   name = Gergő Sulymosi
   email = gergo.sulymosi@gmail.com
 
-# Machine-specific config (e.g. signingkey, company-related settings, ...)
-[include]
-	path = ~/.local/gitconfig
-
 [alias]
   aa= !git add -u && git add . && git status -s
   b = branch
@@ -13,11 +9,12 @@
   ca = commit --amend -C HEAD
   co = checkout
   cob = checkout -b
-  corb = "!f() { git fetch --all; git checkout -b $1 origin/$1; }; f"
+  corb = "!f() { git fetch origin $1; git checkout -b $1 origin/$1; }; f"
   d = diff
   f = fetch
+  fom = fetch origin main
   lg = log --graph --pretty=format:'%C(red)%h%C(reset) -%C(magenta)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset' --abbrev-commit -15
-  p = push --set-upstream
+  p = push
   pf = push --force-with-lease
   s = status --short --branch
   branches = "!f() { git branch -a -v | grep -v '/pr/'; }; f"
@@ -57,9 +54,6 @@
   logallrefupdates = true
   ignorecase = true
   precomposeunicode = true
-
-[interactive]
-  diffFilter = delta --color-only
 
 [init]
   defaultBranch = main
@@ -104,7 +98,7 @@
   colorMoved = plain
   mnemonicPrefix = true
   renames = true
-  tool = nvimdiff
+  tool = kitty
   guitool = kitty.gui
 
 [difftool]
@@ -120,6 +114,8 @@
     cmd = kitten diff $LOCAL $REMOTE
 [difftool "kitty.gui"]
     cmd = kitten diff $LOCAL $REMOTE
+[difftool "hunk"]
+	cmd = hunk difftool \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 
 [rebase]
   autoSquash = true
@@ -307,3 +303,8 @@
 		bold yellow => syntax "#544f4e"
 	# Should match the name of the bat theme
 	syntax-theme = Catppuccin Mocha
+
+# Machine-specific config (signingkey, company settings, Linux overrides written
+# by install.sh, ...). Kept last so it overrides everything above.
+[include]
+	path = ~/.local/gitconfig

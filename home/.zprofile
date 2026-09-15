@@ -1,4 +1,5 @@
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# Homebrew is macOS only; Linux boxes (devpods) have no /opt/homebrew.
+[ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # /etc/zprofile ran path_helper before this file and moved /usr/bin ahead of the
 # mise shims that ~/.zshenv put first. Re-prepend them.
