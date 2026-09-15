@@ -1,0 +1,16 @@
+home/.config/nvim/lua/plugins/ai.lua
+  h_b3ef8339a04ffa 8-11,14-15,24
+home/.config/nvim/lua/plugins/mini-nvim.lua
+  h_b3ef8339a04ffa 16-18,22,82,88
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a5ca03db7b7f3cbe66158c1e51fd34463694279f",
+  "prompts": {},
+  "humans": {
+    "h_b3ef8339a04ffa": {
+      "author": "Gergő Sulymosi <gergo.sulymosi@gmail.com>"
+    }
+  }
+}
