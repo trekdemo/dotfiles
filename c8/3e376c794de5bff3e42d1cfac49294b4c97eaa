@@ -1,0 +1,16 @@
+home/.config/gh/config.yml
+  h_b3ef8339a04ffa 15-19
+home/.config/hunk/config.toml
+  h_b3ef8339a04ffa 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c83e376c794de5bff3e42d1cfac49294b4c97eaa",
+  "prompts": {},
+  "humans": {
+    "h_b3ef8339a04ffa": {
+      "author": "Gergő Sulymosi <gergo.sulymosi@gmail.com>"
+    }
+  }
+}
