@@ -1,0 +1,14 @@
+home/.config/lazygit/config.yml
+  h_b3ef8339a04ffa 3-4,6,11,14-18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "24d3440b5d50ba835f64fd74e69db511a7d14a08",
+  "prompts": {},
+  "humans": {
+    "h_b3ef8339a04ffa": {
+      "author": "Gergő Sulymosi <gergo.sulymosi@gmail.com>"
+    }
+  }
+}

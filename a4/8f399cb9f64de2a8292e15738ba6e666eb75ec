@@ -1,0 +1,60 @@
+home/.config/kitty/dark-theme.auto.conf
+  h_b3ef8339a04ffa 1
+home/.config/kitty/light-theme.auto.conf
+  h_b3ef8339a04ffa 1
+home/.config/kitty/no-preference-theme.auto.conf
+  h_b3ef8339a04ffa 1
+home/.config/kitty/themes/duckbones.conf
+  h_b3ef8339a04ffa 1-49
+home/.config/kitty/themes/forestbones_dark.conf
+  h_b3ef8339a04ffa 1-49
+home/.config/kitty/themes/forestbones_light.conf
+  h_b3ef8339a04ffa 1-49
+home/.config/kitty/themes/kanagawabones.conf
+  h_b3ef8339a04ffa 1-49
+home/.config/kitty/themes/neobones_dark.conf
+  h_b3ef8339a04ffa 1-49
+home/.config/kitty/themes/neobones_light.conf
+  h_b3ef8339a04ffa 1-49
+home/.config/kitty/themes/nordbones.conf
+  h_b3ef8339a04ffa 1-49
+home/.config/kitty/themes/rosebones_dark.conf
+  h_b3ef8339a04ffa 1-49
+home/.config/kitty/themes/rosebones_light.conf
+  h_b3ef8339a04ffa 1-49
+home/.config/kitty/themes/seoulbones_dark.conf
+  h_b3ef8339a04ffa 1-49
+home/.config/kitty/themes/seoulbones_light.conf
+  h_b3ef8339a04ffa 1-49
+home/.config/kitty/themes/tokyobones_dark.conf
+  h_b3ef8339a04ffa 1-49
+home/.config/kitty/themes/tokyobones_light.conf
+  h_b3ef8339a04ffa 1-49
+home/.config/kitty/themes/vimbones.conf
+  h_b3ef8339a04ffa 1-49
+home/.config/kitty/themes/zenbones_dark.conf
+  h_b3ef8339a04ffa 1-49
+home/.config/kitty/themes/zenbones_light.conf
+  h_b3ef8339a04ffa 1-49
+home/.config/kitty/themes/zenburned.conf
+  h_b3ef8339a04ffa 1-49
+home/.config/kitty/themes/zenwritten_dark.conf
+  h_b3ef8339a04ffa 1-49
+home/.config/kitty/themes/zenwritten_light.conf
+  h_b3ef8339a04ffa 1-49
+home/.config/gh/config.yml
+  h_b3ef8339a04ffa 15-19
+home/.config/hunk/config.toml
+  h_b3ef8339a04ffa 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a48f399cb9f64de2a8292e15738ba6e666eb75ec",
+  "prompts": {},
+  "humans": {
+    "h_b3ef8339a04ffa": {
+      "author": "Gergő Sulymosi <gergo.sulymosi@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+home/.config/ghostty/config
+  s_c8915b2b5e6c3f::t_2e6c1ef000b064 4-7
+home/.config/kitty/kitty.conf
+  s_c8915b2b5e6c3f::t_7b5be911341aab 10-13,33-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "da59db40512ac4ec284ac50f91ad5c1cbb59aec4",
+  "prompts": {},
+  "sessions": {
+    "s_c8915b2b5e6c3f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "647a438e-2f62-45a4-a866-95e953fa9551",
+        "model": "unknown"
+      },
+      "human_author": "Gergő Sulymosi <gergo.sulymosi@gmail.com>"
+    }
+  }
+}
