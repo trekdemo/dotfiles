@@ -1,7 +1,10 @@
 # vim: ft=toml
 
 theme = light:Seoulbones Light,dark:Catppuccin Macchiato
-font-family = VictorMono Nerd Font Propo
+font-family = VictorMono Nerd Font
+font-family-bold = VictorMono NFM Bold
+font-family-italic = VictorMono NFM Oblique
+font-family-bold-italic = VictorMono NFM Bold Oblique
 # font-family = VictorMono Nerd Font Mono
 # font-family = JetBrainsMono Nerd Font Mono
 font-size = 13
