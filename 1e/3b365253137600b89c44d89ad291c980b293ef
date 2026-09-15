@@ -1,0 +1,14 @@
+home/.config/hunk/config.toml
+  h_b3ef8339a04ffa 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1e3b365253137600b89c44d89ad291c980b293ef",
+  "prompts": {},
+  "humans": {
+    "h_b3ef8339a04ffa": {
+      "author": "Gergő Sulymosi <gergo.sulymosi@gmail.com>"
+    }
+  }
+}
