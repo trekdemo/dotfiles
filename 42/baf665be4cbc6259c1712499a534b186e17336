@@ -1,0 +1,19 @@
+home/.config/zsh/abbreviations
+  s_c8915b2b5e6c3f::t_881b13266bfc2d 26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "42baf665be4cbc6259c1712499a534b186e17336",
+  "prompts": {},
+  "sessions": {
+    "s_c8915b2b5e6c3f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "647a438e-2f62-45a4-a866-95e953fa9551",
+        "model": "unknown"
+      },
+      "human_author": "Gergő Sulymosi <gergo.sulymosi@gmail.com>"
+    }
+  }
+}
