@@ -1,0 +1,19 @@
+home/.config/nvim/lua/plugins/telescope.lua
+  s_c8915b2b5e6c3f::t_e25f792d248bba 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "4da5b13875a13855cd1a788d669380cec2e54a5a",
+  "prompts": {},
+  "sessions": {
+    "s_c8915b2b5e6c3f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "647a438e-2f62-45a4-a866-95e953fa9551",
+        "model": "unknown"
+      },
+      "human_author": "Gergő Sulymosi <gergo.sulymosi@gmail.com>"
+    }
+  }
+}
