@@ -1,0 +1,14 @@
+home/.config/gh/config.yml
+  h_b3ef8339a04ffa 15-19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0ec40fc40dfa5145d9cf286a5941f5c07b758534",
+  "prompts": {},
+  "humans": {
+    "h_b3ef8339a04ffa": {
+      "author": "Gergő Sulymosi <gergo.sulymosi@gmail.com>"
+    }
+  }
+}
