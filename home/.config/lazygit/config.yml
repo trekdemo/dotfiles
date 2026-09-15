@@ -1,35 +1,21 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
 
+os:
+  editPreset: "nvim"
 gui:
-  border: single
+  border: rounded
   showFileTree: false # Just the list the files changed
   showCommandLog: false
   commitHashLength: 0 # Hide SHAs in commit log
   expandFocusedSidePanel: true
+  shrinkSidePanelsToContent: true
   expandedSidePanelWeight: 3
   enlargedSideViewLocation: top
-  theme:
-    activeBorderColor:
-      - "#8aadf4"
-      - bold
-    inactiveBorderColor:
-      - "#a5adcb"
-    optionsTextColor:
-      - "#8aadf4"
-    selectedLineBgColor:
-      - "#363a4f"
-    cherryPickedCommitBgColor:
-      - "#494d64"
-    cherryPickedCommitFgColor:
-      - "#8aadf4"
-    unstagedChangesColor:
-      - "#ed8796"
-    defaultFgColor:
-      - "#cad3f5"
-    searchingActiveBorderColor:
-      - "#eed49f"
-  authorColors:
-    "*": "#b7bdf8"
+  sidePanels:
+    - [files, worktrees, stash, submodules]
+    - [branches, remotes, tags]
+    - [commits, reflog]
+    - [status]
 git:
   diffRenderers:
     - command: hunk pager
