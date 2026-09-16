@@ -59,6 +59,7 @@ cask 'kitty'
 cask 'ghostty'
 # tap 'derailed/k9s'
 brew 'k9s'
+brew 'kubectx'
 # cask 'google-cloud-sdk'
 
 # ------------------------------------------------------------------------------
