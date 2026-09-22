@@ -70,3 +70,6 @@ auth.json
 !/home/.claude/commands
 !/home/.claude/skills
 /home/.claude/skills/synced
+/home/.config/opencode/package-lock.json
+/home/.config/lazygit/github_pull_requests.json
+/home/.config/nvim/lazy-lock.json
