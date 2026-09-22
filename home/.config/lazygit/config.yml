@@ -18,5 +18,5 @@ gui:
     - [status]
 git:
   diffRenderers:
-    - command: hunk pager
+    - command: hunk pager --transparent-bg
   overrideGpg: true
