@@ -3,7 +3,6 @@
 /home/.Brewfile.lock.json
 /home/.config/homebrew/trust.json.lock
 /home/.agents/.skill-lock.json
-/home/.config/raycast/extensions
 /home/.config/cliptic/*
 /home/.config/configstore
 /home/.config/fish/fish_history
@@ -61,7 +60,7 @@ auth.json
 # Only keep the config file
 /home/.config/pgcli/*
 !/home/.config/pgcli/config
-/home/.config/raycast/config.json
+/home/.config/raycast/*
 /home/.config/1Password/
 /home/.config/colima/
 /home/.claude/*
