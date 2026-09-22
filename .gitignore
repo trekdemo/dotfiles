@@ -70,3 +70,4 @@ auth.json
 !/home/.claude/agents
 !/home/.claude/commands
 !/home/.claude/skills
+/home/.claude/skills/synced
