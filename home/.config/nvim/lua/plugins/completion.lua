@@ -1,6 +1,6 @@
 return {
   'saghen/blink.cmp',
-  version = '*', -- Use a release tag to download pre-built binaries
+  version = '1.*', -- Use a release tag to download pre-built binaries
   event = 'InsertEnter',
   dependencies = { 'rafamadriz/friendly-snippets' },
 
@@ -11,6 +11,7 @@ return {
     keymap = {
       ['<C-f>'] = { 'select_and_accept', 'fallback' },
     },
+    signature = { enabled = true },
     completion = {
       trigger = { show_in_snippet = false },
       ghost_text = { enabled = true },
