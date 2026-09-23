@@ -1,0 +1,14 @@
+home/.Brewfile
+  h_b3ef8339a04ffa 62
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "41563edfcf57ebe152c8c0e134fef1f04b6904b7",
+  "prompts": {},
+  "humans": {
+    "h_b3ef8339a04ffa": {
+      "author": "Gergő Sulymosi <gergo.sulymosi@gmail.com>"
+    }
+  }
+}
