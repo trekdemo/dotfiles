@@ -23,6 +23,7 @@ brew 'yq'
 brew 'rsync'
 brew 'htop'
 brew 'httpie'
+brew 'tree-sitter-cli'
 brew 'imagemagick', link: true
 brew 'yazi'
 brew 'gh'
