@@ -39,17 +39,16 @@ shell-integration = zsh
 # ---------------------------------------------------------------------
 macos-option-as-alt = true
 
+keybind = global:cmd+backquote=toggle_quick_terminal
+keybind = opt+enter=toggle_split_zoom
+
 # Move between panes
 # The defaults are cmd+opt+arrows
 # Alternatively there are the cmd+[ and cmd+] to sequence through the splits
-keybind = opt+k=goto_split:top
-keybind = opt+j=goto_split:bottom
-keybind = opt+h=goto_split:left
-keybind = opt+l=goto_split:right
 
-keybind = super+control+shift+alt+arrow_down=resize_split:down,50
-keybind = super+control+shift+alt+arrow_up=resize_split:up,50
-keybind = super+control+shift+alt+arrow_left=resize_split:left,50
-keybind = super+control+shift+alt+arrow_right=resize_split:right,50
+# Outside Neovim.
+keybind = performable:opt+h=goto_split:left
+keybind = performable:opt+j=goto_split:down
+keybind = performable:opt+k=goto_split:up
+keybind = performable:opt+l=goto_split:right
 
-keybind = opt+enter=toggle_split_zoom
