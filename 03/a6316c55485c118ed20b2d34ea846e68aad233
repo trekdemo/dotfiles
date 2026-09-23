@@ -1,0 +1,14 @@
+home/.config/ghostty/config
+  h_b3ef8339a04ffa 42-44,49-53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "03a6316c55485c118ed20b2d34ea846e68aad233",
+  "prompts": {},
+  "humans": {
+    "h_b3ef8339a04ffa": {
+      "author": "Gergő Sulymosi <gergo.sulymosi@gmail.com>"
+    }
+  }
+}
