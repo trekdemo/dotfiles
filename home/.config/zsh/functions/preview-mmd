@@ -1,0 +1,35 @@
+#!/bin/zsh
+
+# Render a Mermaid diagram and show it in kitty, sized to the window.
+#
+# Usage: preview-mmd <path-to-mmd>
+
+emulate -L zsh
+
+if (( $# != 1 )) || [[ ! -f $1 ]]; then
+  print -u2 "usage: preview-mmd <path-to-mmd>"
+  return 1
+fi
+
+local cmd
+for cmd in mmdc kitty; do
+  (( $+commands[$cmd] )) || { print -u2 "preview-mmd: '$cmd' not found"; return 1 }
+done
+
+local tmpdir=$(mktemp -d -t preview-mmd)
+local output=$tmpdir/diagram.png
+trap "rm -rf -- ${(q)tmpdir}" EXIT INT TERM
+
+local size
+size=$(kitty icat --print-window-size) || return 1
+
+mmdc --quiet --input $1 --output $output --outputFormat png \
+     --width ${size%x*} --height ${size#*x} --scale 2 \
+     --backgroundColor transparent || return 1
+
+# --stdin=no stops icat from reading the image from stdin when it is not a tty
+# (for example, under a file watcher). Stream mode sends the image data
+# before the temp file is removed.
+kitty icat --stdin=no --clear
+kitty icat --stdin=no --transfer-mode=stream \
+  --fit=width $output
