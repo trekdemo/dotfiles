@@ -6,26 +6,18 @@ return {
     events = { 'BufReadPre' },
   },
 
-  {
-    'sindrets/diffview.nvim',
-    opts = {},
-    commands = { 'DiffviewOpen' },
-    keys = {
-      { '<leader>gd', '<cmd>DiffviewOpen<cr>', desc = '[diffview]: Open' },
-    },
-  },
-
   -- A Git wrapper so awesome, it should be illegal
   {
     'tpope/vim-fugitive',
     dependencies = {
       'tpope/vim-rhubarb',
-      'barrettruth/diffs.nvim',
+      'https://forge.barrettruth.com/barrettruth/diffs.nvim',
       init = function()
         vim.g.diffs = {
-          fugitive = true,
-          neogit = false,
-          extra_filetypes = { 'diff' },
+          integrations = {
+            fugitive = true,
+            gitsigns = true,
+          },
         }
       end,
     },
