@@ -60,6 +60,7 @@
   "syntaxHighlightingDisabled": false,
   "alwaysThinkingEnabled": true,
   "effortLevel": "medium",
+  "theme": "auto",
   "preferredNotifChannel": "kitty",
   "skipAutoPermissionPrompt": true
 }
