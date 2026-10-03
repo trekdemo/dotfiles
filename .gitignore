@@ -69,6 +69,7 @@ auth.json
 !/home/.claude/agents
 !/home/.claude/commands
 !/home/.claude/skills
+!/home/.claude/hooks
 /home/.claude/skills/synced
 /home/.config/opencode/package-lock.json
 /home/.config/lazygit/github_pull_requests.json

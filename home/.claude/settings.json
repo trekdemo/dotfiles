@@ -26,7 +26,19 @@
     "defaultMode": "auto"
   },
   "model": "opus[1m]",
-  "hooks": {},
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/enforce-rails-migration-generator.sh"
+          }
+        ]
+      }
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "~/bin/claude-statusline.sh",
