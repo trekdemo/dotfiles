@@ -29,14 +29,11 @@ bindkey '^[[F' end-of-line # End
 bindkey '^[[1;3C' .forward-word # Alt-Right
 bindkey '^[[1;3D' .backward-word # Alt-Left
 
-# Alt-l instead of C-l because that is used to navigate tmux and vim panes
-bindkey "^[l" clear-screen
-
 # Create a ZSH widget that can be bound to a key
 # https://unix.stackexchange.com/questions/289883/binding-key-shortcuts-to-shell-functions-in-zsh
 
 # Open In Neovim
-open-vim-here() { nvim "+Telescop find_files" }
+open-vim-here() { nvim . }
 zle -N open-vim-here
 bindkey '^[v' open-vim-here
 
@@ -45,10 +42,30 @@ bindkey '^[v' open-vim-here
 jump-to-folder() {
   setopt local_options
   setopt +o nomatch
-  local dir="cd $(ls -rdt ~/projects ~/src/*/*/* | fzf --layout=reverse)"
+  local dir="cd $(ls -rdt ~/projects/* | fzf --layout=reverse)"
 
   ${=dir}
   zle reset-prompt
 }
 zle -N jump-to-folder
-bindkey '^[j' jump-to-folder
+bindkey '^J' jump-to-folder
+
+# Jump to another worktree of the current git repository
+jump-to-worktree() {
+  local selected
+  if ! git rev-parse --git-dir >/dev/null 2>&1; then
+    zle -M "Not inside a git repository"
+    return 1
+  fi
+
+  # Lines look like "<path>  <sha> [<branch>]"; bare repos have no checkout to jump to
+  selected=$(git worktree list | grep -v ' (bare)$' | fzf --layout=reverse --prompt="worktree> ") || {
+    zle reset-prompt
+    return 0
+  }
+
+  cd "$(sed -E 's/ +[0-9a-f]{7,} .*$//' <<< "$selected")"
+  zle reset-prompt
+}
+zle -N jump-to-worktree
+bindkey '^G' jump-to-worktree
