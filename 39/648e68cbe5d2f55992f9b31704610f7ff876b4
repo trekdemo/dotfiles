@@ -1,0 +1,14 @@
+home/bin/claude-statusline.sh
+  h_b3ef8339a04ffa 1-99,102-270,272-289,292-311,314-362,364-365
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "39648e68cbe5d2f55992f9b31704610f7ff876b4",
+  "prompts": {},
+  "humans": {
+    "h_b3ef8339a04ffa": {
+      "author": "Gergő Sulymosi <gergo.sulymosi@gmail.com>"
+    }
+  }
+}
