@@ -1,0 +1,16 @@
+home/.config/ghostty/config
+  h_b3ef8339a04ffa 55-60
+home/.config/nvim/lua/plugins/splits-navigation.lua
+  h_b3ef8339a04ffa 2-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6c93ec2528a7f8fc9952ec166461c4467362181b",
+  "prompts": {},
+  "humans": {
+    "h_b3ef8339a04ffa": {
+      "author": "Gergő Sulymosi <gergo.sulymosi@gmail.com>"
+    }
+  }
+}
