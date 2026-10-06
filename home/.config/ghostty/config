@@ -52,3 +52,9 @@ keybind = performable:opt+j=goto_split:down
 keybind = performable:opt+k=goto_split:up
 keybind = performable:opt+l=goto_split:right
 
+# Inside Neovim.
+keybind = nvim/
+keybind = nvim/opt+h=esc:h
+keybind = nvim/opt+j=esc:j
+keybind = nvim/opt+k=esc:k
+keybind = nvim/opt+l=esc:l
