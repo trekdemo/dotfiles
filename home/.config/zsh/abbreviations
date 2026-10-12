@@ -1,4 +1,5 @@
 abbr g="git"
+abbr "git w"="git worktree"
 abbr ld="lazydocker"
 abbr lg="lazygit"
 abbr lj="lazyjira"
