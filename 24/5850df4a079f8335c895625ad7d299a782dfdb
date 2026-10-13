@@ -1,0 +1,16 @@
+.gitignore
+  h_b3ef8339a04ffa 5,71,73
+home/.agents/.skill-lock.json
+  h_b3ef8339a04ffa 1-92
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "245850df4a079f8335c895625ad7d299a782dfdb",
+  "prompts": {},
+  "humans": {
+    "h_b3ef8339a04ffa": {
+      "author": "Gergő Sulymosi <gergo.sulymosi@gmail.com>"
+    }
+  }
+}
