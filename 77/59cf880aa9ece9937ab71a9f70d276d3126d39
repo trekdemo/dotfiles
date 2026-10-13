@@ -1,0 +1,14 @@
+.gitignore
+  h_b3ef8339a04ffa 5,71,73
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7759cf880aa9ece9937ab71a9f70d276d3126d39",
+  "prompts": {},
+  "humans": {
+    "h_b3ef8339a04ffa": {
+      "author": "Gergő Sulymosi <gergo.sulymosi@gmail.com>"
+    }
+  }
+}
