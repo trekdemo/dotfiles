@@ -2,7 +2,7 @@
 !/terminfo/.terminfo/src
 /home/.Brewfile.lock.json
 /home/.config/homebrew/trust.json.lock
-/home/.agents/.skill-lock.json
+/home/.agents/skills
 /home/.config/cliptic/*
 /home/.config/configstore
 /home/.config/fish/fish_history
@@ -68,9 +68,9 @@ auth.json
 /home/.claude/CLAUDE.md
 !/home/.claude/agents
 !/home/.claude/commands
-!/home/.claude/skills
-!/home/.claude/hooks
+/home/.claude/skills
 /home/.claude/skills/synced
+!/home/.claude/hooks
 /home/.config/opencode/package-lock.json
 /home/.config/lazygit/github_pull_requests.json
 /home/.config/nvim/lazy-lock.json
