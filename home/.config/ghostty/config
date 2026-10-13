@@ -39,7 +39,7 @@ shell-integration = zsh
 # ---------------------------------------------------------------------
 macos-option-as-alt = true
 
-keybind = global:cmd+backquote=toggle_quick_terminal
+# keybind = global:cmd+backquote=toggle_quick_terminal
 keybind = opt+enter=toggle_split_zoom
 
 # Move between panes
