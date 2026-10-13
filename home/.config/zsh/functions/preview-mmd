@@ -32,4 +32,4 @@ mmdc --quiet --input $1 --output $output --outputFormat png \
 # before the temp file is removed.
 kitty icat --stdin=no --clear
 kitty icat --stdin=no --transfer-mode=stream \
-  --fit=width $output
+  --fit=both $output
