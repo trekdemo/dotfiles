@@ -32,6 +32,11 @@ Before starting any task, assess your understanding level (1-5 scale):
 - **Clear Abstractions**: Don't mix high-level policy with low-level implementation details
 - **Consistent Patterns**: Follow established patterns within the codebase
 
+### Code Comments
+- **Don't repeat the code**
+- Comments should hold the information that lives in the designer's head and not in the code, especially abstractions and rationale. Treat writing them as part of design, not as an afterthought.
+- **Prefer higher-level**, more abstract comments, less tied to implementation details to avoid them going stale
+
 ### Development Strategy
 - **Make the change easy, then make the easy change** (Kent Beck) - If a change feels awkward, first refactor so the structure welcomes it (behavior-preserving, may be hard), then make the now-small change. Keep the two steps as separate commits: `refactor:` then `feat:`/`fix:`. Never mix refactoring and behavior change in one commit.
 - **Fix root causes, not symptoms** - Fix failing tests instead of deleting them
