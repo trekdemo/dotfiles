@@ -1,0 +1,19 @@
+home/.config/mise/config.toml
+  s_278247060468b7::t_b4c6d453840f78 2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "4b4b08949db6f1c5f6efe1dfa80748a26847c142",
+  "prompts": {},
+  "sessions": {
+    "s_278247060468b7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "74cafc61-83a2-44e5-be74-c69b2a745e2f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Gergő Sulymosi <gergo.sulymosi@gmail.com>"
+    }
+  }
+}
