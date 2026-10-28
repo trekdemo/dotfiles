@@ -1,0 +1,19 @@
+home/.config/nvim/lua/plugins/splits-navigation.lua
+  s_278247060468b7::t_4b554696f9ff6e 4-6,9-15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "90b295c4efe6c1dbfa77b26ddd175e1f02224305",
+  "prompts": {},
+  "sessions": {
+    "s_278247060468b7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "74cafc61-83a2-44e5-be74-c69b2a745e2f",
+        "model": "unknown"
+      },
+      "human_author": "Gergő Sulymosi <gergo.sulymosi@gmail.com>"
+    }
+  }
+}
