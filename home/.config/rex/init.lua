@@ -31,3 +31,25 @@ for key, direction in pairs(directions) do
     return after ~= before
   end)
 end
+
+-- ctrl+a g: lazygit in a floating pane, in the focused pane's directory.
+-- The shell doesn't report its directory (OSC 7), so the terminal's `pwd`
+-- is empty; take the foreground process's cwd instead.
+rex.bind("ctrl+a>g", function(ctx)
+  local process = rex.block.call(terminal, "process", { block_id = ctx.block_id })
+  local cwd = process.foreground and process.foreground.cwd or ""
+
+  rex.session.new_layer({
+    session_id = ctx.session_id,
+    bounds = { 0.05, 0.05, 0.9, 0.9 },
+    layout = {
+      block = {
+        flavor = "com.superlogical.terminal.shell",
+        label = "lazygit",
+        options = { command = { "lazygit" }, cwd = cwd },
+      },
+    },
+    focus = true,
+  })
+  return true
+end)
