@@ -34,29 +34,39 @@ for key, direction in pairs(directions) do
 	end)
 end
 
+-- ---------------------------------------------------------------------
+-- Actions
+-- ---------------------------------------------------------------------
+
 -- Run `program` in a floating pane, in the focused pane's directory.
 -- The shell doesn't report its directory (OSC 7), so the terminal's `pwd`
 -- is empty; take the foreground process's cwd instead.
-local function open_floating(program)
-	return function(ctx)
-		local process = rex.block.call(terminal, "process", { block_id = ctx.block_id })
-		local cwd = process.foreground and process.foreground.cwd or ""
+local function floating_action(program, title)
+	rex.action({
+		name = program,
+		title = title,
+		run = function(ctx)
+			local process = rex.block.call(terminal, "process", { block_id = ctx.block_id })
+			local cwd = process.foreground and process.foreground.cwd or ""
 
-		rex.session.new_layer({
-			session_id = ctx.session_id,
-			bounds = { 0.05, 0.05, 0.9, 0.9 },
-			layout = {
-				block = {
-					flavor = "com.superlogical.terminal.shell",
-					label = program,
-					options = { command = { program }, cwd = cwd },
+			rex.session.new_layer({
+				session_id = ctx.session_id,
+				bounds = { 0.05, 0.05, 0.9, 0.9 },
+				layout = {
+					block = {
+						flavor = "com.superlogical.terminal.shell",
+						label = program,
+						options = { command = { program }, cwd = cwd },
+					},
 				},
-			},
-			focus = true,
-		})
-		return true
-	end
+				focus = true,
+			})
+		end,
+	})
 end
 
-rex.bind("ctrl+a>g", open_floating("lazygit"))
-rex.bind("ctrl+a>d", open_floating("lazydocker"))
+floating_action("lazygit", "Open lazygit")
+floating_action("lazydocker", "Open lazydocker")
+
+rex.bind("ctrl+a>g", "lazygit")
+rex.bind("ctrl+a>d", "lazydocker")
