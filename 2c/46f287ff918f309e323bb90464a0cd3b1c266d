@@ -1,0 +1,19 @@
+home/.config/openlogi/config.toml
+  s_278247060468b7::t_12d527321d940b 4,10-12,42-43,64,70-79
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "2c46f287ff918f309e323bb90464a0cd3b1c266d",
+  "prompts": {},
+  "sessions": {
+    "s_278247060468b7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "74cafc61-83a2-44e5-be74-c69b2a745e2f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Gergő Sulymosi <gergo.sulymosi@gmail.com>"
+    }
+  }
+}
