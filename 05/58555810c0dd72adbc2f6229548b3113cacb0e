@@ -1,0 +1,19 @@
+home/.config/rex/init.lua
+  s_278247060468b7::t_b1e2d2a6c8825d 37-40,44-60,62-65,68-72
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0558555810c0dd72adbc2f6229548b3113cacb0e",
+  "prompts": {},
+  "sessions": {
+    "s_278247060468b7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "74cafc61-83a2-44e5-be74-c69b2a745e2f",
+        "model": "unknown"
+      },
+      "human_author": "Gergő Sulymosi <gergo.sulymosi@gmail.com>"
+    }
+  }
+}
