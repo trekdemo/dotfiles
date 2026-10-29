@@ -1,11 +1,6 @@
 return {
-  -- 'tpope/vim-dispatch',
-  'trekdemo/vim-dispatch',
-  -- branch = 'wezterm-support',
-  -- branch = 'kitty-support',
-  branch = 'rex-support',
-  -- dev = true,
-  -- path = '~/projects/vim-dispatch',
+  'tpope/vim-dispatch',
+  dependencies = { 'trekdemo/vim-dispatch-extras' },
   config = function()
     vim.g.dispatch_compilers = { ['bundle exec'] = '', ['bin/'] = '' }
     vim.g.dispatch_quickfix_height = 30
