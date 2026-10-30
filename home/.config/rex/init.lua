@@ -67,6 +67,8 @@ end
 
 floating_action("lazygit", "Open lazygit")
 floating_action("lazydocker", "Open lazydocker")
+floating_action("yazi", "Open yazi")
 
 rex.bind("ctrl+a>g", "lazygit")
 rex.bind("ctrl+a>d", "lazydocker")
+rex.bind("ctrl+a>y", "yazi")
