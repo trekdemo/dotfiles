@@ -54,12 +54,15 @@ end
 -- so the terminal's `pwd` is empty; take the foreground process's cwd instead.
 --
 -- opts (all optional):
---   command  program to run (default: `name`)
+--   command  program to run, a string or an argv table (default: `name`)
 --   label    pane label (default: `name`)
 --   size     fraction of the window, number or { width, height } (default: 0.9)
 local function floating_action(name, title, opts)
 	opts = opts or {}
 	local command = opts.command or name
+	if type(command) == "string" then
+		command = { command }
+	end
 	local bounds = centred_bounds(opts.size or 0.9)
 
 	rex.action({
@@ -76,7 +79,7 @@ local function floating_action(name, title, opts)
 					block = {
 						flavor = "com.superlogical.terminal.shell",
 						label = opts.label or name,
-						options = { command = { command }, cwd = cwd },
+						options = { command = command, cwd = cwd },
 					},
 				},
 				focus = true,
@@ -88,9 +91,10 @@ end
 floating_action("lazygit", "Open lazygit")
 floating_action("lazydocker", "Open lazydocker")
 floating_action("yazi", "Open yazi")
+floating_action("gh_dash", "Open gh dash", { command = { "gh", "dash" } })
 
 -- Pick a JANE Code task and open it in the browser (script: bin/jane-tasks).
-floating_action("jane_tasks", "Open JANE task", {
+floating_action("jane_tasks", "Open JANE tasks", {
 	command = os.getenv("HOME") .. "/.config/rex/bin/jane-tasks",
 	label = "JANE tasks",
 	size = { 0.5, 0.8 },
@@ -99,4 +103,5 @@ floating_action("jane_tasks", "Open JANE task", {
 rex.bind("ctrl+a>g", "lazygit")
 rex.bind("ctrl+a>d", "lazydocker")
 rex.bind("ctrl+a>y", "yazi")
+rex.bind("ctrl+a>p", "gh_dash")
 rex.bind("ctrl+a>j", "jane_tasks")
