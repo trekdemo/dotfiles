@@ -38,12 +38,32 @@ end
 -- Actions
 -- ---------------------------------------------------------------------
 
--- Run `program` in a floating pane, in the focused pane's directory.
--- The shell doesn't report its directory (OSC 7), so the terminal's `pwd`
--- is empty; take the foreground process's cwd instead.
-local function floating_action(program, title)
+-- Bounds { x, y, width, height } for a layer centred in the window.
+-- `size` is a fraction of the window: one number for both sides, or
+-- { width, height }.
+local function centred_bounds(size)
+	local w, h = size, size
+	if type(size) == "table" then
+		w, h = size[1], size[2]
+	end
+	return { (1 - w) / 2, (1 - h) / 2, w, h }
+end
+
+-- Register action `name` that runs a program in a floating pane, in the
+-- focused pane's directory. The shell doesn't report its directory (OSC 7),
+-- so the terminal's `pwd` is empty; take the foreground process's cwd instead.
+--
+-- opts (all optional):
+--   command  program to run (default: `name`)
+--   label    pane label (default: `name`)
+--   size     fraction of the window, number or { width, height } (default: 0.9)
+local function floating_action(name, title, opts)
+	opts = opts or {}
+	local command = opts.command or name
+	local bounds = centred_bounds(opts.size or 0.9)
+
 	rex.action({
-		name = program,
+		name = name,
 		title = title,
 		run = function(ctx)
 			local process = rex.block.call(terminal, "process", { block_id = ctx.block_id })
@@ -51,12 +71,12 @@ local function floating_action(program, title)
 
 			rex.session.new_layer({
 				session_id = ctx.session_id,
-				bounds = { 0.05, 0.05, 0.9, 0.9 },
+				bounds = bounds,
 				layout = {
 					block = {
 						flavor = "com.superlogical.terminal.shell",
-						label = program,
-						options = { command = { program }, cwd = cwd },
+						label = opts.label or name,
+						options = { command = { command }, cwd = cwd },
 					},
 				},
 				focus = true,
@@ -69,6 +89,14 @@ floating_action("lazygit", "Open lazygit")
 floating_action("lazydocker", "Open lazydocker")
 floating_action("yazi", "Open yazi")
 
+-- Pick a JANE Code task and open it in the browser (script: bin/jane-tasks).
+floating_action("jane_tasks", "Open JANE task", {
+	command = os.getenv("HOME") .. "/.config/rex/bin/jane-tasks",
+	label = "JANE tasks",
+	size = { 0.5, 0.8 },
+})
+
 rex.bind("ctrl+a>g", "lazygit")
 rex.bind("ctrl+a>d", "lazydocker")
 rex.bind("ctrl+a>y", "yazi")
+rex.bind("ctrl+a>j", "jane_tasks")

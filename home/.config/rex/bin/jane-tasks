@@ -1,0 +1,150 @@
+#!/usr/bin/env bash
+# Pick a JANE Code task with fzf, preview its description, and open it in
+# the JANE web UI.
+#
+# Keys: type to filter · enter opens the task · ctrl-o opens its PR
+#       ctrl-r reloads · ctrl-/ toggles the preview · esc quits
+#
+# Env:
+#   JANE_CODE     path to the jane-code CLI (default: newest plugin install)
+#   JANE_WEB_URL  printf pattern for a task's web page, %s = task id
+#                 (default: https://jane.betterup.co/code/tasks/%s)
+#   JANE_LIMIT    number of tasks to fetch (default: 50)
+set -euo pipefail
+
+web_url=${JANE_WEB_URL:-https://jane.betterup.co/code/tasks/%s}
+limit=${JANE_LIMIT:-50}
+self=$(realpath "$0")
+
+# ---------------------------------------------------------------------
+# Subcommands that fzf calls back into. They read the task list from
+# $JANE_TASKS_JSON, which the main run exports.
+# ---------------------------------------------------------------------
+
+# Rows for fzf: "<id>\t<display>". fzf shows only the display part.
+print_rows() {
+  jq -r '
+    def pad($n): tostring | if length >= $n then .[0:$n] else . + (" " * ($n - length)) end;
+    def icon:
+      if   test("complet|done|merged")     then "✅"
+      elif test("fail|error|cancel")       then "❌"
+      elif test("block|stuck")             then "⛔"
+      elif test("provision|queue|pending") then "⏳"
+      elif test("park|stop|idle")          then "💤"
+      elif test("review|preview|ready")    then "👀"
+      else "🏃" end;
+    .tasks[]
+    | (.derived_status // .status // "unknown") as $s
+    | [ (.id | tostring),
+        ([ ("#" + (.id | tostring) | pad(6)),
+           ($s | icon),
+           (.created_at // "" | .[0:10]),
+           (.title // "(untitled)")
+         ] | join("  "))
+      ] | @tsv
+  ' "$JANE_TASKS_JSON"
+}
+
+# Markdown summary of one task for the preview panel.
+print_preview() {
+  local id=$1
+  jq -r --argjson id "$id" '
+    def link($label; $url): if $url then "- **\($label):** \($url)" else empty end;
+    .tasks[] | select(.id == $id)
+    | [ "# #\(.id) \(.title // "(untitled)")",
+        "",
+        "- **Status:** \(.derived_status // .status)"
+          + (if .block_reason then " (\(.block_reason))" else "" end)
+          + (if .stuck_reason then " (stuck: \(.stuck_reason))" else "" end),
+        "- **Repository:** \(.repository // "—")",
+        "- **Created:** \(.created_at // "" | .[0:16] | sub("T"; " "))",
+        link("PR"; .pr_url),
+        link("Jira"; .jira_issue_url),
+        link("Slack"; .slack_thread_url),
+        link("Preview"; .envoy_url),
+        (if .completion_summary then "", "## Summary", "", .completion_summary else empty end),
+        "",
+        "## Description",
+        "",
+        (.description // "_No description._")
+      ] | join("\n")
+  ' "$JANE_TASKS_JSON" | render_markdown
+}
+
+render_markdown() {
+  if command -v glow >/dev/null; then
+    glow --style "${JANE_GLOW_STYLE:-dark}" --width "${FZF_PREVIEW_COLUMNS:-80}" -
+  else
+    cat
+  fi
+}
+
+fetch_tasks() {
+  "$jane" list --limit "$limit" > "$JANE_TASKS_JSON"
+}
+
+open_task() {
+  # shellcheck disable=SC2059 # web_url is a printf pattern by design
+  open "$(printf "$web_url" "$1")"
+}
+
+open_pr() {
+  local url
+  url=$(jq -r --argjson id "$1" '.tasks[] | select(.id == $id) | .pr_url // empty' "$JANE_TASKS_JSON")
+  [[ -n $url ]] && open "$url"
+}
+
+find_jane() {
+  jane=${JANE_CODE:-}
+  if [[ -z $jane ]]; then
+    jane=$(ls -d "$HOME"/.claude/plugins/cache/betterup-engineering/jane-code/*/bin/jane-code 2>/dev/null | sort -V | tail -n 1)
+  fi
+  if [[ -z $jane || ! -x $jane ]]; then
+    echo "jane-code CLI not found. Install the jane-code plugin or set JANE_CODE." >&2
+    return 1
+  fi
+  export JANE_CODE=$jane
+}
+
+pause() { read -rsn1 -p "Press any key to close."; }
+
+# fzf passes the task id as {1}; refuse anything that is not a number.
+require_id() { [[ ${1:-} =~ ^[0-9]+$ ]] || exit 1; }
+
+case ${1:-} in
+  --rows)    print_rows; exit ;;
+  --preview) require_id "${2:-}"; print_preview "$2"; exit ;;
+  --open-pr) require_id "${2:-}"; open_pr "$2"; exit ;;
+  --reload)  find_jane && fetch_tasks && print_rows; exit ;;
+esac
+
+# ---------------------------------------------------------------------
+# Main run
+# ---------------------------------------------------------------------
+find_jane || { pause; exit 1; }
+
+JANE_TASKS_JSON=$(mktemp)
+export JANE_TASKS_JSON
+trap 'rm -f "$JANE_TASKS_JSON"' EXIT
+
+printf 'Fetching JANE tasks…\r'
+if ! fetch_tasks; then
+  echo "Could not fetch tasks:"
+  cat "$JANE_TASKS_JSON"
+  pause
+  exit 1
+fi
+
+selected=$(print_rows | fzf \
+  --delimiter '\t' --with-nth 2 \
+  --header 'enter: open task · ctrl-o: open PR · ctrl-r: reload · ctrl-/: preview · esc: quit' \
+  --header-first --prompt 'JANE › ' --layout reverse --no-sort \
+  --preview "'$self' --preview {1}" \
+  --preview-window 'down,65%,wrap,border-top' \
+  --bind "ctrl-o:execute-silent('$self' --open-pr {1})" \
+  --bind "ctrl-r:reload('$self' --reload)" \
+  --bind 'ctrl-/:toggle-preview') || exit 0
+
+id=${selected%%$'\t'*}
+require_id "$id"
+open_task "$id"
