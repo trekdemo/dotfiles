@@ -1,0 +1,21 @@
+home/.config/rex/init.lua
+  s_c4921821d104b5::t_05a400f0d570b6 41-64,66,74,78-79,92-98,102
+home/.config/rex/bin/jane-tasks
+  s_c4921821d104b5::t_84825a7b968968 1-150
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6322cd25a91db065861db9b04f8e227156771dad",
+  "prompts": {},
+  "sessions": {
+    "s_c4921821d104b5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8238bf5f-4fd4-4a3c-97b7-05f59f157bfb",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Gergő Sulymosi <gergo.sulymosi@gmail.com>"
+    }
+  }
+}
