@@ -40,15 +40,15 @@ bindkey '^[v' open-vim-here
 
 # Jump to a project folder
 jump-to-folder() {
-  setopt local_options
-  setopt +o nomatch
-  local dir="cd $(ls -rdt ~/projects/* | fzf --layout=reverse)"
-
-  ${=dir}
+  local dir
+  # Only cd when a project was picked; a cancelled fzf would otherwise run a bare `cd` to ~
+  dir=$(ls -rdt ~/projects/* | fzf --layout=reverse) && cd "$dir"
   zle reset-prompt
 }
 zle -N jump-to-folder
-bindkey '^J' jump-to-folder
+# Not ^J: Enter pressed with Ctrl still held arrives as ^J (line feed).
+# Ctrl-- sends ^_ (0x1F), which replaces emacs-mode undo (Ctrl-/ also sends ^_).
+bindkey '^_' jump-to-folder # Ctrl--
 
 # Jump to another worktree of the current git repository
 jump-to-worktree() {
