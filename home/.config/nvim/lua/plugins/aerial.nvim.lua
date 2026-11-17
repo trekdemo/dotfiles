@@ -3,6 +3,10 @@ return {
   opts = {},
   config = function()
     require('aerial').setup {
+      max_width = { 40, 0.2 },
+      width = nil,
+      min_width = 25,
+
       -- optionally use on_attach to set keymaps when aerial has attached to a buffer
       on_attach = function(bufnr)
         -- Jump forwards/backwards with '{' and '}'
