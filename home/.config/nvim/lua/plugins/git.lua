@@ -32,4 +32,8 @@ return {
       { '<leader>ghp', ':!gh pr view -w || gh pr create -w<cr>', { desc = 'Create or view GitHub PR' } },
     },
   },
+  {
+    -- Waiting for nvim 0.13.0
+    'justinmk/guh.nvim',
+  },
 }
