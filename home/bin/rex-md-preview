@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+# rex-md-preview [DIR] — fuzzy find Markdown files under DIR (default: the
+# current directory) with fzf and preview them with tkmp.
+#
+# tkmp needs a real terminal, so it cannot draw inside fzf's preview window.
+# Inside Rex we open a side pane next to fzf and restart tkmp there whenever
+# the selection changes. Outside Rex there is no preview, just the list.
+#
+#   Enter   edit the selected file in $EDITOR (the preview pane stays open
+#           and tkmp re-renders on every save)
+#   Esc     quit
+set -euo pipefail
+
+self=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SOURCE[0]}")
+
+# Resolve real binaries once: mise shims are slow and noisy when run per keypress.
+resolve() { mise which "$1" 2>/dev/null || command -v "$1" || echo "$1"; }
+: "${OFZF_TKMP:=$(resolve tkmp)}"
+export OFZF_TKMP
+
+# --- side pane: loop that renders whatever file fzf last focused -----------
+viewer() {
+  local state=$1 shown=
+  current() { cat "$state/path" 2>/dev/null || true; }
+  # Run a command in the foreground (tkmp needs to own the terminal) while
+  # publishing its pid so `show` can stop it. Skip it if fzf already moved on.
+  run_fg() {
+    bash -c 'echo $$ >"$1/pid"; [[ $(cat "$1/path") == "$2" ]] || exit 0; shift 2; exec "$@"' \
+      _ "$state" "$shown" "$@" || true
+  }
+  while [[ -d $state ]]; do
+    if [[ $(current) != "$shown" ]]; then
+      shown=$(current)
+      printf '\e[H\e[2J'
+      [[ -z $shown ]] || run_fg "$OFZF_TKMP" "$shown"
+    fi
+    # Idle until the selection changes; never redraw the same file again.
+    while [[ -d $state && $(current) == "$shown" ]]; do sleep 0.1; done
+  done
+}
+
+# --- called by fzf on every focus change ------------------------------------
+show() {
+  local state=$1 file=$2
+  printf '%s' "$file" >"$state/path"
+  kill "$(cat "$state/pid" 2>/dev/null)" 2>/dev/null || true
+}
+
+case ${1:-} in
+  --viewer) viewer "$2"; exit ;;
+  --show) show "$2" "$3"; exit ;;
+esac
+
+cd "${1:-.}"
+list_files() { fd --type f --extension md --hidden --exclude .git --exclude .obsidian; }
+fzf_opts=(--layout=reverse --prompt='md> ' --bind 'enter:execute(${EDITOR:-vi} {})')
+
+if [[ -n ${REX_BLOCK:-} ]] && command -v rex >/dev/null; then
+  state=$(mktemp -d "${TMPDIR:-/tmp}/rex-md-preview.XXXXXX")
+  pane=$(rex split -b "$REX_BLOCK" --focus=false --ratio 60 --label md-preview --json -c "$PWD" \
+           -- "$self" --viewer "$state" | sed -n 's/.*"\(block:[^"]*\)".*/\1/p' | tail -1)
+  cleanup() {
+    kill "$(cat "$state/pid" 2>/dev/null)" 2>/dev/null || true
+    rm -rf "$state"
+    [[ -n $pane ]] && rex block close "$pane" >/dev/null 2>&1 || true
+  }
+  trap cleanup EXIT
+  fzf_opts+=(--bind "focus:execute-silent($(printf %q "$self") --show $(printf %q "$state") {})")
+fi
+
+list_files | fzf "${fzf_opts[@]}"
